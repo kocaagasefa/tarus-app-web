@@ -8,7 +8,7 @@ import {MuiThemeProvider,CssBaseline,createMuiTheme} from '@material-ui/core';
 import * as serviceWorker from './serviceWorker';
 
 import store from './store/configureStore';
-import Landing from './containers/Landing/Landing';
+import Landing from './containers/Landing';
 
 const theme = createMuiTheme({
     typography: {
