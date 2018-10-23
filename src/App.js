@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
-import Landing from './containers/Landing/Landing';
+import {Switch,Route,withRouter,Redirect} from 'react-router-dom';
+import Layout from './hoc/Layout';
+import Houses from './containers/Houses';
+import Roommates from './containers/Roommates';
+
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <Landing />
-      </div>
+      <Layout>
+        <Switch>
+          <Route path="/houses" component={Houses} />
+          <Route path="/roommates" component= {Roommates} />
+          <Redirect to="/" />
+        </Switch>
+      </Layout>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

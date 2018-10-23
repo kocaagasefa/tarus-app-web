@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {BrowserRouter,Route} from 'react-router-dom';
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {MuiThemeProvider,CssBaseline,createMuiTheme} from '@material-ui/core';
 import * as serviceWorker from './serviceWorker';
 
 import store from './store/configureStore';
+import Landing from './containers/Landing/Landing';
 
 const theme = createMuiTheme({
     typography: {
@@ -19,7 +20,11 @@ const app = (
         <Provider store={store()}>
             <MuiThemeProvider theme={theme}>
                 <CssBaseline/>
-                <Route path="/" component={App} /> 
+            <Switch>
+                <Route exact path="/" component={Landing} /> 
+                <Route path="*" component={App} />
+            </Switch>
+                
             </MuiThemeProvider> 
         </Provider>       
     </BrowserRouter>
