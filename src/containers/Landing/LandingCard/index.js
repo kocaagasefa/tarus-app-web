@@ -7,9 +7,13 @@ import Button from '@material-ui/core/Button';
 import './style.css';
 
 class LandingCard extends Component {
+    panelClick = (path) => {
+        this.props.history.push(path)
+    }
+
     render() {
         return (
-            <Card className="LandingCard-Content">
+            <Card className="LandingCard-Content" onClick={this.props.clicked}>
                 <CardContent>
                     {this.props.name}
                 </CardContent>

@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {BrowserRouter,Route,Switch} from 'react-router-dom';
-import {Provider} from 'react-redux';
-import {MuiThemeProvider,CssBaseline,createMuiTheme} from '@material-ui/core';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { MuiThemeProvider, CssBaseline, createMuiTheme } from '@material-ui/core';
 import * as serviceWorker from './serviceWorker';
 
 import store from './store/configureStore';
@@ -12,21 +12,21 @@ import Landing from './containers/Landing';
 
 const theme = createMuiTheme({
     typography: {
-      useNextVariants: true,
+        useNextVariants: true,
     },
-  });
+});
 const app = (
-    <BrowserRouter> 
+    <BrowserRouter>
         <Provider store={store()}>
             <MuiThemeProvider theme={theme}>
-                <CssBaseline/>
-            <Switch>
-                <Route exact path="/" component={Landing} /> 
-                <Route path="*" component={App} />
-            </Switch>
-                
-            </MuiThemeProvider> 
-        </Provider>       
+                <CssBaseline />
+                <Switch>
+                    <Route exact path="/" component={Landing} />
+                    <Route path="*" component={App} />
+                </Switch>
+
+            </MuiThemeProvider>
+        </Provider>
     </BrowserRouter>
 )
 
