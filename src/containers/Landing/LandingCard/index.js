@@ -4,7 +4,6 @@ import Card from '@material-ui/core/Card';
 import { CardContent, ListSubheader } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Ionicon from 'react-ionicons';
-import './style.css';
 
 class LandingCard extends Component {
     panelClick = (path) => {
@@ -16,9 +15,13 @@ class LandingCard extends Component {
 
         return (
             <Card className={classes.card} onClick={this.props.clicked}>
-                {this.props.name === 'EVLER' ? <Ionicon icon="ios-home-outline"  style={{height: '20%', width: '30%'}} color="white" /> : <Ionicon icon="ios-people-outline" style={{height: '20%', width: '30%'}} color="white" />}
-                <ListSubheader component="div" style={{ fontSize: '25px', color: 'white' }}>{this.props.name}</ListSubheader>
-                <CardContent style={{ height: '75%' }}>
+                {
+                    this.props.name === 'EVLER' ?
+                        <Ionicon icon="ios-home-outline" className={classes.icon} color="white" /> :
+                        <Ionicon icon="ios-people-outline" className={classes.icon} color="white" />
+                }
+                <ListSubheader component="div" className={classes.subHeader}>{this.props.name}</ListSubheader>
+                <CardContent>
                     {this.props.content}
                 </CardContent>
             </Card >
@@ -38,7 +41,14 @@ const style = theme => ({
         borderRadius: '15px',
         border: '2px solid #6C046C'
     },
-
+    icon: {
+        width: '30%',
+        height: '20%'
+    },
+    subHeader: {
+        fontSize: '25px',
+        color: 'white'
+    }
 })
 
 export default withStyles(style)(LandingCard);

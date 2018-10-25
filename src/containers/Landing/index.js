@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import LandingCard from './LandingCard';
 import { withStyles } from '@material-ui/core/styles';
-import './LandingCard/style.css';
 
 class Landing extends Component {
     panelClicked = (path) => {
