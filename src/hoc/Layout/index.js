@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import NavBar  from '../../components/NavBar';
 
-import {signInWithEmailAndPassword,signOut} from '../../store/actions';
+import {signInWithEmailAndPassword,signOut,facebookSignIn,googleSignIn} from '../../store/actions';
 
 import './style.css';
 
@@ -25,6 +25,8 @@ class Layout extends Component {
                     user={this.props.user} 
                     inputChanged={this.onInputChangeHandler} 
                     signOut={this.props.signOut}
+                    facebookSignIn={this.props.facebookSignIn}
+                    googleSignIn={this.props.googleSignIn}
                     signIn = {()=>this.props.signInWithEmailAndPassword(this.state.email,this.state.password)}/>
                 <main className=".Main">
                     {this.props.children}
@@ -43,6 +45,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         signInWithEmailAndPassword: (email,password) => dispatch(signInWithEmailAndPassword(email,password)),
+        facebookSignIn: () => dispatch(facebookSignIn()),
+        googleSignIn: () => dispatch(googleSignIn()),
         signOut: () => dispatch(signOut())
     }
 }

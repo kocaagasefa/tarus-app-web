@@ -10,6 +10,8 @@ const navBar = props => (
         </>
         :
         <>
+            <button onClick={props.googleSignIn}>Sign In With Google</button>
+            <button onClick={props.facebookSignIn}>Sign In With Facebook</button>
             <input placeholder="email" type="email" name="email" onChange={props.inputChanged}/>
             <input placeholder="password" type="password" name="password"onChange={props.inputChanged}/>
             <button onClick={props.signIn}>Sign In</button>
