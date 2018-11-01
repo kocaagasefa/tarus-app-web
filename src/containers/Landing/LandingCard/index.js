@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+import { CardContent, ListSubheader } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import './style.css';
+import Ionicon from 'react-ionicons';
 
 class LandingCard extends Component {
     panelClick = (path) => {
@@ -16,26 +14,40 @@ class LandingCard extends Component {
         const { classes } = this.props;
 
         return (
-            <Card className={classes.content} onClick={this.props.clicked}>
+            <Card className={classes.card} onClick={this.props.clicked}>
+                {
+                    this.props.name === 'EVLER' ?
+                        <Ionicon icon="ios-home-outline" className={classes.icon} color="white" /> :
+                        <Ionicon icon="ios-people-outline" className={classes.icon} color="white" />
+                }
+                <ListSubheader component="div" className={classes.subHeader}>{this.props.name}</ListSubheader>
                 <CardContent>
-                    {this.props.name}
+                    {this.props.content}
                 </CardContent>
-                <CardActions>
-                    <Button size="small">Learn More</Button>
-                </CardActions>
             </Card >
         )
     }
 }
 
 const style = theme => ({
-    content: {
+    card: {
         width: '25%',
+        height: '80%',
         margin: '1em',
         textAlign: 'center',
-        backgroundColor: '#8C089F',
+        backgroundColor: '#9F009F',
         color: '#f3f3f3',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        borderRadius: '15px',
+        border: '2px solid #6C046C'
+    },
+    icon: {
+        width: '30%',
+        height: '20%'
+    },
+    subHeader: {
+        fontSize: '25px',
+        color: 'white'
     }
 })
 
