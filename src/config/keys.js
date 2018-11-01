@@ -10,6 +10,6 @@ export const FirebaseConfig = {
     authDomain: "homebineapp-8f4dd.firebaseapp.com",
     databaseURL: "https://homebineapp-8f4dd.firebaseio.com",
     projectId: "homebineapp-8f4dd",
-    storageBucket: "",
+    storageBucket: "homebineapp-8f4dd.appspot.com",
     messagingSenderId: "938331350307"
   };
