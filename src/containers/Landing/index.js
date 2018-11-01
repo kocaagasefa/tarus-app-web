@@ -30,7 +30,7 @@ const style = theme => ({
         alignItems: 'center' ,
         justifyContent: 'center',
         flex: '1',
-        backgroundColor: '#4A004A'
+        backgroundColor: '#380040'
     }
 })
 

@@ -35,11 +35,12 @@ const style = theme => ({
         height: '80%',
         margin: '1em',
         textAlign: 'center',
-        backgroundColor: '#9F009F',
+        backgroundColor: 'initial',
+        backgroundImage: 'linear-gradient(-180deg, #380040 0%, #6F007F 100%)',
         color: '#f3f3f3',
         cursor: 'pointer',
         borderRadius: '15px',
-        border: '2px solid #6C046C'
+        border: '2px solid #6F007F'
     },
     icon: {
         width: '30%',
