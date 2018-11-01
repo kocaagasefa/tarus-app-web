@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import {Switch,Route,withRouter,Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 import Layout from './hoc/Layout';
 import Houses from './containers/Houses';
 import Roommates from './containers/Roommates';
 
+import {authStateChangedListener} from './store/actions';
+
 import './App.css';
 
 class App extends Component {
+  componentDidMount(){
+    this.props.authStateChangedListener();
+  }
+  componentWillUnmount(){
+
+  }
+
   render() {
     return (
       <Layout>
@@ -19,5 +29,10 @@ class App extends Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    authStateChangedListener: () => dispatch(authStateChangedListener())
+  }
+}
 
-export default withRouter(App);
+export default withRouter(connect(null,mapDispatchToProps)(App));
