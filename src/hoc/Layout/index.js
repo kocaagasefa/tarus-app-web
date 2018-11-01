@@ -13,7 +13,7 @@ class Layout extends Component {
     }
     onInputChangeHandler = (event) => {
         this.setState({
-            [event.target.name]:event.target.value
+            [event.target.name]: event.target.value
         })
     }
 
