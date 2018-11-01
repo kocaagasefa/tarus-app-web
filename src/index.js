@@ -9,6 +9,7 @@ import * as serviceWorker from './serviceWorker';
 
 import store from './store/configureStore';
 import Landing from './containers/Landing';
+import Login from './containers/Auth/Auth';
 
 const theme = createMuiTheme({
     typography: {
@@ -22,6 +23,7 @@ const app = (
                 <CssBaseline />
                 <Switch>
                     <Route exact path="/" component={Landing} />
+                    <Route path="/login" component={Login} />
                     <Route path="*" component={App} />
                 </Switch>
 
