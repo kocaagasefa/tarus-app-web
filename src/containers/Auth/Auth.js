@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, TextField, CardContent, Button } from '@material-ui/core';
 import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { signInWithEmailAndPassword, signOut } from '../../store/actions';
+import { signInWithEmailAndPassword } from '../../store/actions';
 
 class Auth extends Component {
     state = {
@@ -11,7 +11,6 @@ class Auth extends Component {
     }
 
     handleChange = (event) => {
-        debugger;
 		this.setState({
             [event.target.name]: event.target.value
         })
@@ -102,8 +101,7 @@ const style = theme => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        signInWithEmailAndPassword: (email, password) => dispatch(signInWithEmailAndPassword(email, password)),
-        signOut: () => dispatch(signOut())
+        signInWithEmailAndPassword: (email, password) => dispatch(signInWithEmailAndPassword(email, password))
     }
 }
 
