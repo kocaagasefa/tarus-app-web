@@ -16,8 +16,6 @@ package-lock.json
 .env.test.local
 .env.production.local
 
-/src/config/keys.js
-
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
