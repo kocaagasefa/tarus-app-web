@@ -1,24 +1,40 @@
 import React from 'react';
+import { withStyles, FormLabel, Chip } from '@material-ui/core';
 
-const navBar = props => (
-    <div style={{display:"flex",justifyContent:"flex-end"}}>
-        {
-        props.user?
-        <>
-            <span>{props.user.email}</span>
-            <button onClick={props.signOut}>Sign Out</button>
-        </>
-        :
-        <>
-            <button onClick={props.googleSignIn}>Sign In With Google</button>
-            <button onClick={props.facebookSignIn}>Sign In With Facebook</button>
-            <input placeholder="email" type="email" name="email" onChange={props.inputChanged}/>
-            <input placeholder="password" type="password" name="password"onChange={props.inputChanged}/>
-            <button onClick={props.signIn}>Sign In</button>
-        </>
-        }
+const navBar = props => {
+    const { classes } = props;
 
-    </div>
-);
+    return (
+        <div className={classes.navBar}>
+            {
+                props.user ?
+                    <>
+                        <Chip className={classes.content} label={props.user.email}></Chip>
+                        <FormLabel className={classes.content} onClick={props.signOut}>Sign Out</FormLabel>
+                    </>
+                    :
+                    <>
+                        <FormLabel className={classes.content}>Sign Up</FormLabel>
+                        <FormLabel className={classes.content} onClick={props.onSignInOpen}>Sign In</FormLabel>
+                    </>
+            }
+    
+        </div>
+    )
+};
 
-export default navBar;
+const styles = theme => ({
+    navBar: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        border: '1px solid ',
+    },
+    content: {
+        margin: '1em',
+        justifyContent: 'flex-end',
+        textAlign: 'center',
+        cursor: 'pointer'
+    }
+})
+
+export default withStyles(styles)( navBar);

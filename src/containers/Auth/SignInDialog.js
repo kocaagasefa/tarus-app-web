@@ -4,7 +4,7 @@ import { TextField, Button, Dialog, DialogTitle } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { signInWithEmailAndPassword, googleSignIn, facebookSignIn } from '../../store/actions';
 
-class LoginDialog extends Component {
+class SignInDialog extends Component {
     state = {
         email: '',
         password: ''
@@ -18,24 +18,24 @@ class LoginDialog extends Component {
     
     handleClose = () => {
         signInWithEmailAndPassword(this.state.email, this.state.password);
-        this.props.onClose();
+        this.props.onSignInClose();
         this.setState({email: '', password: ''})
     };
 
     handleGoogleClose = () => {
         this.props.googleSignIn();
-        this.props.onClose();
+        this.props.onSignInClose();
         this.setState({email: '', password: ''})
     };
 
     handleFacebookClose = () => {
         this.props.facebookSignIn();
-        this.props.onClose();
+        this.props.onSignInClose();
         this.setState({email: '', password: ''})
     };
 
     handleListItemClick = value => {
-        this.props.onClose(value);
+        this.props.onSignInClose(value);
     };
 
     render() {
@@ -104,4 +104,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(withStyles(style)(LoginDialog));
+export default connect(null, mapDispatchToProps)(withStyles(style)(SignInDialog));
