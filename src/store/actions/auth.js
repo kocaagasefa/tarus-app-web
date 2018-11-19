@@ -63,11 +63,22 @@ export const googleSignIn = () => {
 }
 
 export const authStateChangedListener = () => dispatch => {
-    auth.onAuthStateChanged(user => {
+    return auth.onAuthStateChanged(user => {
         console.log("user",user)
         dispatch({
           type: FETCH_USER,
           user
         });
+        
     });
   };
+
+  
+  export const signUp = data => dispatch => {
+
+      auth.createUserAndRetrieveDataWithEmailAndPassword(data)
+        .then(res=>res)
+        .catch(error=>{
+            console.log("sign up error",error);
+        })
+  }
