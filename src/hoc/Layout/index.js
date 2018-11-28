@@ -19,11 +19,11 @@ class Layout extends Component {
         })
     }
 
-    handleLogiSignInOpen = () => {
+    handleSignInOpen = () => {
         this.setState({ openSignInDialog: true });
     }
 
-    handleLogiSignInClose = () => {
+    handleSignInClose = () => {
         this.setState({ openSignInDialog: false });
     }
 
@@ -31,7 +31,7 @@ class Layout extends Component {
         return (
             <>
                 <NavBar
-                    onSignInOpen={this.handleLogiSignInOpen}
+                    onSignInOpen={this.handleSignInOpen}
                     user={this.props.user}
                     inputChanged={this.onInputChangeHandler}
                     signOut={this.props.signOut}
@@ -41,7 +41,7 @@ class Layout extends Component {
                 <SignInDialog
                     open={this.state.openSignInDialog}
                     handleLoginOpen={this.handleLoginOpen}
-                    onSignInClose={this.handleLogiSignInClose}
+                    onSignInClose={this.handleSignInClose}
                 />
                 <main className=".Main">
                     {this.props.children}

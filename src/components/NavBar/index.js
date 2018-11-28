@@ -14,8 +14,9 @@ const navBar = props => {
                     </>
                     :
                     <>
-                        <FormLabel className={classes.content}>Sign Up</FormLabel>
-                        <FormLabel className={classes.content} onClick={props.onSignInOpen}>Sign In</FormLabel>
+                        <FormLabel onClick={props.onSignInOpen} className={classes.content}>Giriş Yap</FormLabel>
+                        <FormLabel disable={true} className={classes.contentDisable}> | </FormLabel>
+                        <FormLabel className={classes.content}>Kayıt Ol</FormLabel>
                     </>
             }
     
@@ -27,13 +28,20 @@ const styles = theme => ({
     navBar: {
         display: 'flex',
         justifyContent: 'flex-end',
-        border: '1px solid ',
+        backgroundImage: 'linear-gradient(-180deg, #380040 0%, #6F007F 100%)',
     },
     content: {
         margin: '1em',
         justifyContent: 'flex-end',
         textAlign: 'center',
+        color: '#f3f3f3',
         cursor: 'pointer'
+    },
+    contentDisable: {
+        margin: '1em',
+        justifyContent: 'flex-end',
+        textAlign: 'center',
+        color: '#f3f3f3',
     }
 })
 
