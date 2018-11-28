@@ -1,6 +1,7 @@
 import {FETCH_USER} from '../actions/actionTypes';
 const initialState= {
-    user:null
+    user:null,
+    signInCheck:true
 }
 
 const authReducer = (state=initialState,action)=>{
@@ -8,10 +9,11 @@ const authReducer = (state=initialState,action)=>{
     case FETCH_USER : 
     return {
         ...state,
-        user:action.user
+        user:action.user,
+        signInCheck:false
     }
-        default:
-        return state;
+    default:
+    return state;
     }
 }
 
