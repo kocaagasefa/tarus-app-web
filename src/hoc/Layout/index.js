@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NavBar from '../../components/NavBar';
 import SignInDialog from '../../containers/Auth/SignInDialog';
+import SignUpDialog from '../../containers/Auth/SignUpDialog';
 
 import { signInWithEmailAndPassword, signOut, facebookSignIn, googleSignIn } from '../../store/actions';
 
@@ -11,7 +12,8 @@ class Layout extends Component {
     state = {
         email: "",
         password: "",
-        openLoginDialog: false
+        openSignInDialog: false,
+        openSignUpDialog: false
     }
     onInputChangeHandler = (event) => {
         this.setState({
@@ -27,11 +29,20 @@ class Layout extends Component {
         this.setState({ openSignInDialog: false });
     }
 
+    handleSignUpOpen = () => {
+        this.setState({ openSignUpDialog: true });
+    }
+
+    handleSignUpClose = () => {
+        this.setState({ openSignUpDialog: false });
+    }
+
     render() {
         return (
             <>
                 <NavBar
                     onSignInOpen={this.handleSignInOpen}
+                    onSignUpOpen={this.handleSignUpOpen}
                     user={this.props.user}
                     inputChanged={this.onInputChangeHandler}
                     signOut={this.props.signOut}
@@ -40,8 +51,11 @@ class Layout extends Component {
                     signIn={() => this.props.signInWithEmailAndPassword(this.state.email, this.state.password)} />
                 <SignInDialog
                     open={this.state.openSignInDialog}
-                    handleLoginOpen={this.handleLoginOpen}
                     onSignInClose={this.handleSignInClose}
+                />
+                <SignUpDialog
+                    open={this.state.openSignUpDialog}
+                    onSignUpClose={this.handleSignUpClose}
                 />
                 <main className=".Main">
                     {this.props.children}

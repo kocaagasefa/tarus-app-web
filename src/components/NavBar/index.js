@@ -16,7 +16,7 @@ const navBar = props => {
                     <>
                         <FormLabel onClick={props.onSignInOpen} className={classes.content}>Giriş Yap</FormLabel>
                         <FormLabel disable={true} className={classes.contentDisable}> | </FormLabel>
-                        <FormLabel className={classes.content}>Kayıt Ol</FormLabel>
+                        <FormLabel onClick={props.onSignUpOpen} className={classes.content}>Kayıt Ol</FormLabel>
                     </>
             }
     
