@@ -80,7 +80,7 @@ class SignUpDialog extends Component {
                     />
                     <Button variant="outlined" className={classes.button}
                         onClick={this.handleFacebookClose} disabled={!this.state.accept}>
-                        KAYIT OL
+                        SIGN UP
                 </Button>
                 </Card>
             </Dialog>
