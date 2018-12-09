@@ -1,17 +1,16 @@
 import React from 'react';
 
-import { InputBase, withStyles } from '@material-ui/core';
+import {InputBase, withStyles } from '@material-ui/core';
 
 
 const customInput = props => {
-    console.log("left icon", props.lefticon)
+    const {container, lefticon,classes,containerStyle, ...others} = props;
     return (
-    <div className={props.classes.container} style={props.containerStyle}>
-        {props.lefticon}
+    <div className={classes.container} style={containerStyle}>
+        {lefticon}
         <InputBase  
-            {...props}
-            className={[props.classes.input,props.lefticon&&props.classes.inputWithIcon]}
-            style={props.style}/>
+            {...others}
+            className ={[props.classes.input,props.lefticon&&props.classes.inputWithIcon]}/>
     </div>
 );}
 
@@ -28,7 +27,8 @@ const style = theme => ({
     input:{
         color:"white",
         width:"100%",
-        boxSizing:"border-box"
+        boxSizing:"border-box",
+        padding:"3px 0"
     },
     inputWithIcon:{
         paddingLeft:theme.spacing.unit,
