@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withStyles, TextField, Button } from '@material-ui/core';
+import CustomButton from '../../components/UI/CustomButton';
+import CustomInput from '../../components/UI/CustomButton';
+import { withStyles, TextField } from '@material-ui/core';
 import { signInWithEmailAndPassword, googleSignIn, facebookSignIn } from '../../store/actions';
 
 class SignInFields extends Component {
@@ -58,18 +60,9 @@ class SignInFields extends Component {
                     value={this.state.password}
                     onChange={this.handleChange}
                 />
-                <Button variant="outlined" className={classes.button}
-                    onClick={() => this.handleClose()}>
-                    Login
-                </Button>
-                <Button variant="outlined" className={classes.button}
-                    onClick={this.handleGoogleClose}>
-                    Login with Google
-                </Button>
-                <Button variant="outlined" className={classes.button}
-                    onClick={this.handleFacebookClose}>
-                    Login with Facebook
-                </Button>
+                <CustomButton label="Login" clickedHandler={this.handleClose} />
+                <CustomButton label="Login with Google" clickedHandler={this.handleGoogleClose} />
+                <CustomButton label="Login with Facebook" clickedHandler={this.handleFacebookClose} />
             </>
         );
     }
@@ -81,18 +74,7 @@ const style = theme => ({
         display: 'flex',
         borderRadius: '10px',
         backgroundColor: '#f3f3f3',
-    },
-    button: {
-        width: '95%',
-        marginLeft: '1em',
-        marginBottom: '1em',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flex: '1',
-        borderRadius: '10px',
-        backgroundColor: '#f3f3f3'
-    },
+    }
 })
 
 const mapDispatchToProps = dispatch => {
