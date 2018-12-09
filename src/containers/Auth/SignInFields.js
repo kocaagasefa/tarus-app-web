@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CustomButton from '../../components/UI/CustomButton';
-import CustomInput from '../../components/UI/CustomButton';
-import { withStyles, TextField } from '@material-ui/core';
+import Button from '../../components/UI/CustomButton';
+import Input from '../../components/UI/CustomInput';
+import {
+    AlternateEmail as EmailIcon,
+    VpnKey as PasswordIcon
+} from '@material-ui/icons'
 import { signInWithEmailAndPassword, googleSignIn, facebookSignIn } from '../../store/actions';
 
 class SignInFields extends Component {
@@ -36,46 +39,30 @@ class SignInFields extends Component {
     };
 
     render() {
-        const { classes } = this.props;
-
         return (
             <>
-                <TextField className={classes.textBox}
-                    id="email"
-                    variant="outlined"
-                    margin="dense"
+                <Input variant="outlined"
+                    lefticon={<EmailIcon style={{ color: "white" }} />}
                     placeholder="Email"
                     name="email"
                     value={this.state.email}
                     onChange={this.handleChange}
-                >
-                </TextField>
-                <TextField className={classes.textBox}
-                    id="password"
-                    variant="outlined"
-                    margin="dense"
+                />
+                <Input variant="outlined"
+                    lefticon={<PasswordIcon style={{ color: "white" }} />}
                     placeholder="Password"
                     name="password"
                     type="password"
                     value={this.state.password}
                     onChange={this.handleChange}
                 />
-                <CustomButton label="Login" clickedHandler={this.handleClose} />
-                <CustomButton label="Login with Google" clickedHandler={this.handleGoogleClose} />
-                <CustomButton label="Login with Facebook" clickedHandler={this.handleFacebookClose} />
+                <Button clickedHandler={this.handleClose}>Login</Button>
+                <Button clickedHandler={this.handleGoogleClose}>Login with Google</Button>
+                <Button clickedHandler={this.handleFacebookClose}>Login with Facebook</Button>
             </>
         );
     }
 }
-
-const style = theme => ({
-    textBox: {
-        margin: '1em',
-        display: 'flex',
-        borderRadius: '10px',
-        backgroundColor: '#f3f3f3',
-    }
-})
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -85,4 +72,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(withStyles(style)(SignInFields));
+export default connect(null, mapDispatchToProps)(SignInFields);

@@ -6,15 +6,15 @@ const customButton = (props) => {
     const { classes } = props;
 
     return (
-        <Button className={classes.button} onClick={props.clickedHandler}>{props.label}</Button>
+        <Button className={classes.button} onClick={props.clickedHandler}>{props.children}</Button>
     )
 }
 
 const style = theme => ({
     button: {
-        width: '95%',
-        marginLeft: '1em',
-        marginBottom: '1em',
+        width: '97%',
+        marginLeft: theme.spacing.unit,
+        marginBottom: theme.spacing.unit,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
