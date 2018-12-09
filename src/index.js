@@ -16,6 +16,7 @@ const theme = createMuiTheme({
         useNextVariants: true,
     },
 });
+
 const app = (
     <BrowserRouter>
         <Provider store={store()}>

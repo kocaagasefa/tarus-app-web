@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { auth } from 'firebase';
+import { Avatar } from '@material-ui/core';
+
 
 class Profile extends Component {
     componentDidMount(){
@@ -12,7 +13,7 @@ class Profile extends Component {
             <>
                 <div>{displayName}</div>
                 <div>{email}</div>
-                <img src={photoURL} alt="profile"/>
+                <Avatar style={{width:400,height:400}} src={photoURL} alt="profile"/>
             </>
         );
     }

@@ -77,7 +77,10 @@ export const authStateChangedListener = () => dispatch => {
   export const signUp = data => dispatch => {
 
       auth.createUserAndRetrieveDataWithEmailAndPassword(data)
-        .then(res=>res)
+        .then(res=>{
+
+            return res;
+        })
         .catch(error=>{
             console.log("sign up error",error);
         })

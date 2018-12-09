@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Dialog, Card, TextField, withStyles, FormControlLabel, Checkbox, Button } from '@material-ui/core';
 import green from '@material-ui/core/colors/green';
 import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
+import Input from '../../components/UI/CustomInput';
 
 class SignUpDialog extends Component {
     state = {
@@ -20,7 +21,7 @@ class SignUpDialog extends Component {
             <Dialog onClose={this.props.onSignUpClose} aria-labelledby="login-title" {...other} fullWidth={true} maxWidth={'sm'}>
                 <Card className={classes.signIn}>
                     <PersonAddIcon className={classes.icon} color="white" />
-                    <TextField className={classes.textBox}
+                    <Input className={classes.textBox}
                         id="email"
                         variant="outlined"
                         margin="dense"
@@ -29,7 +30,8 @@ class SignUpDialog extends Component {
                         value={this.state.email}
                         onChange={this.handleChange}
                     />
-                    <TextField className={classes.textBox}
+                    <Input className={classes.textBox}
+                        lefticon = {<PersonAddIcon />}
                         id="password"
                         variant="outlined"
                         margin="dense"
