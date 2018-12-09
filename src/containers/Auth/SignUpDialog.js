@@ -31,7 +31,7 @@ class SignUpDialog extends Component {
                         onChange={this.handleChange}
                     />
                     <Input className={classes.textBox}
-                        lefticon = {<PersonAddIcon />}
+                        lefticon = {<PersonAddIcon style={{color:"white"}}/>}
                         id="password"
                         variant="outlined"
                         margin="dense"
