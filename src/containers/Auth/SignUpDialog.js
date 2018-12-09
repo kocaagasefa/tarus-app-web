@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { Dialog, Card, TextField, withStyles, FormControlLabel, Checkbox, Button } from '@material-ui/core';
+import { Dialog, Card, withStyles, FormControlLabel, Checkbox } from '@material-ui/core';
 import green from '@material-ui/core/colors/green';
-import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
+import { 
+    PersonAddOutlined as PersonAddIcon,
+    AlternateEmailOutlined as EmailIcon,
+    VpnKeyOutlined as PasswordIcon
+
+} from '@material-ui/icons';
 import Input from '../../components/UI/CustomInput';
+import Button from '../../components/UI/CustomButton';
 
 class SignUpDialog extends Component {
     state = {
@@ -11,7 +17,13 @@ class SignUpDialog extends Component {
         password2: "",
         name: "",
         surname: "",
-        accept: false
+        accept: true
+    }
+    handleChange = (event) => {
+        const { name,value,checked } = event.target;
+        this.setState({
+            [name]: checked ||value  
+        })
     }
 
     render() {
@@ -21,47 +33,36 @@ class SignUpDialog extends Component {
             <Dialog onClose={this.props.onSignUpClose} aria-labelledby="login-title" {...other} fullWidth={true} maxWidth={'sm'}>
                 <Card className={classes.signIn}>
                     <PersonAddIcon className={classes.icon} color="white" />
-                    <Input className={classes.textBox}
-                        id="email"
-                        variant="outlined"
-                        margin="dense"
+                    <Input 
+                        lefticon={<EmailIcon style={{color:"white"}}/>}
                         placeholder="Email"
                         name="email"
                         value={this.state.email}
                         onChange={this.handleChange}
                     />
-                    <Input className={classes.textBox}
-                        lefticon = {<PersonAddIcon style={{color:"white"}}/>}
-                        id="password"
-                        variant="outlined"
-                        margin="dense"
+                    <Input 
+                        lefticon = {<PasswordIcon style={{color:"white"}}/>}
                         placeholder="Password"
                         name="password"
+                        type="password"
                         value={this.state.password}
                         onChange={this.handleChange}
                     />
-                    <TextField className={classes.textBox}
-                        id="password2"
-                        variant="outlined"
-                        margin="dense"
+                    <Input
+                        lefticon = {<PasswordIcon style={{color:"white"}}/>}
                         placeholder="Password(again)"
                         name="password2"
-                        value={this.state.password}
+                        type="password"
+                        value={this.state.password2}
                         onChange={this.handleChange}
                     />
-                    <TextField className={classes.textBox}
-                        id="name"
-                        variant="outlined"
-                        margin="dense"
+                    <Input
                         placeholder="Name"
                         name="name"
                         value={this.state.name}
                         onChange={this.handleChange}
                     />
-                    <TextField className={classes.textBox}
-                        id="surname"
-                        variant="outlined"
-                        margin="dense"
+                    <Input 
                         placeholder="Surname"
                         name="surname"
                         value={this.state.surname}
@@ -71,7 +72,8 @@ class SignUpDialog extends Component {
                         control={
                             <Checkbox
                                 checked={this.state.accept}
-                                value="accept"
+                                name="accept"
+                                onChange={this.handleChange}
                                 classes={{
                                     root: classes.root,
                                     checked: classes.checked,
