@@ -1,23 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Dialog, Card, ListSubheader, withStyles } from '@material-ui/core';
 import PeopleIcon from '@material-ui/icons/PeopleOutline';
 import SignInFields from './SignInFields';
 
-class SignInDialog extends Component {
-    render() {
-        const { classes, onClose, selectedValue, ...other } = this.props;
+const signInDialog = (props) => {
+    const { classes, onSignInClose, ...other } = props;
 
-        return (
-            <Dialog onClose={this.props.onSignInClose} aria-labelledby="login-title" {...other} fullWidth={true} maxWidth={'sm'}>
-                <Card className={classes.signIn}>
-                    <PeopleIcon className={classes.icon} color="white" />
-                    <ListSubheader component="div" className={classes.subHeader}>HOMEBINE</ListSubheader>
-                    <SignInFields onSignInClose={this.props.onSignInClose}/>
-                </Card>
-            </Dialog>
-        );
-    }
-}
+    return (
+        <Dialog onClose={onSignInClose} aria-labelledby="login-title" {...other} fullWidth={true} maxWidth={'sm'}>
+            <Card className={classes.signIn}>
+                <PeopleIcon className={classes.icon} style={{ color: "white" }} />
+                <ListSubheader component="div" className={classes.subHeader}>HOMEBINE</ListSubheader>
+                <SignInFields onSignInClose={onSignInClose} />
+            </Card>
+        </Dialog>
+    )
+};
+
+// class SignInDialog extends Component {
+//     render() {
+//         const { classes, onClose, selectedValue, ...other } = this.props;
+
+//         return (
+//             <Dialog onClose={this.props.onSignInClose} aria-labelledby="login-title" {...other} fullWidth={true} maxWidth={'sm'}>
+//                 <Card className={classes.signIn}>
+//                     <PeopleIcon className={classes.icon} color="white" />
+//                     <ListSubheader component="div" className={classes.subHeader}>HOMEBINE</ListSubheader>
+//                     <SignInFields />
+//                 </Card>
+//             </Dialog>
+//         );
+//     }
+// }
 
 const style = theme => ({
     signIn: {
@@ -40,4 +54,4 @@ const style = theme => ({
     }
 })
 
-export default withStyles(style)(SignInDialog);
+export default withStyles(style)(signInDialog);
