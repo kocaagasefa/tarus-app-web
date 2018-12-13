@@ -6,7 +6,7 @@ const customButton = (props) => {
     const { classes } = props;
 
     return (
-        <Button className={classes.button} onClick={props.clickedHandler}>{props.children}</Button>
+        <Button className={classes.button} onClick={props.onClick}>{props.children}</Button>
     )
 }
 

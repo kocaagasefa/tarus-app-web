@@ -4,7 +4,7 @@ import NavBar from '../../components/NavBar';
 import SignInDialog from '../../containers/Auth/SignInDialog';
 import SignUpDialog from '../../containers/Auth/SignUpDialog';
 
-import { signInWithEmailAndPassword, signOut, facebookSignIn, googleSignIn } from '../../store/actions';
+import { signOut } from '../../store/actions';
 
 import './style.css';
 
@@ -15,6 +15,7 @@ class Layout extends Component {
         openSignInDialog: false,
         openSignUpDialog: false
     }
+    
     onInputChangeHandler = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -45,10 +46,7 @@ class Layout extends Component {
                     onSignUpOpen={this.handleSignUpOpen}
                     user={this.props.user}
                     inputChanged={this.onInputChangeHandler}
-                    signOut={this.props.signOut}
-                    facebookSignIn={this.props.facebookSignIn}
-                    googleSignIn={this.props.googleSignIn}
-                    signIn={() => this.props.signInWithEmailAndPassword(this.state.email, this.state.password)} />
+                    signOut={this.props.signOut} />
                 <SignInDialog
                     open={this.state.openSignInDialog}
                     onSignInClose={this.handleSignInClose}
@@ -73,9 +71,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        signInWithEmailAndPassword: (email, password) => dispatch(signInWithEmailAndPassword(email, password)),
-        facebookSignIn: () => dispatch(facebookSignIn()),
-        googleSignIn: () => dispatch(googleSignIn()),
         signOut: () => dispatch(signOut())
     }
 }
