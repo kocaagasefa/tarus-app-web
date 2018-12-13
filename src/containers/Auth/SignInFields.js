@@ -21,7 +21,7 @@ class SignInFields extends Component {
     }
 
     handleClose = () => {
-        signInWithEmailAndPassword(this.state.email, this.state.password);
+        this.props.signInWithEmailAndPassword(this.state.email, this.state.password);
         this.props.onSignInClose();
         this.setState({ email: '', password: '' })
     };
@@ -38,6 +38,10 @@ class SignInFields extends Component {
         this.setState({ email: '', password: '' })
     };
 
+    onInputChangeHandler = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
+    }
+
     render() {
         return (
             <>
@@ -46,7 +50,7 @@ class SignInFields extends Component {
                     placeholder="Email"
                     name="email"
                     value={this.state.email}
-                    onChange={this.handleChange}
+                    onChange={this.onInputChangeHandler}
                 />
                 <Input variant="outlined"
                     lefticon={<PasswordIcon style={{ color: "white" }} />}
@@ -54,11 +58,11 @@ class SignInFields extends Component {
                     name="password"
                     type="password"
                     value={this.state.password}
-                    onChange={this.handleChange}
+                    onChange={this.onInputChangeHandler}
                 />
-                <Button clickedHandler={this.handleClose}>Login</Button>
-                <Button clickedHandler={this.handleGoogleClose}>Login with Google</Button>
-                <Button clickedHandler={this.handleFacebookClose}>Login with Facebook</Button>
+                <Button onClick={() => this.handleClose()}>Login</Button>
+                <Button onClick={this.handleGoogleClose}>Login with Google</Button>
+                <Button onClick={this.handleFacebookClose}>Login with Facebook</Button>
             </>
         );
     }
