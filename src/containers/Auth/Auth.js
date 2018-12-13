@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, TextField, CardContent, Button } from '@material-ui/core';
-import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { signInWithEmailAndPassword, signOut } from '../../store/actions';
 
 class Auth extends Component {
@@ -20,7 +20,6 @@ class Auth extends Component {
         const { classes } = this.props
         return (
             <form className={classes.login} autoComplete="off">
-                <MuiThemeProvider theme={theme}>
                     <Card className={classes.loginCard}>
                         <CardContent>
                             <TextField className={classes.textBox}
@@ -54,17 +53,10 @@ class Auth extends Component {
                             </Button>
                         </CardContent>
                     </Card>
-                </MuiThemeProvider>
             </form>
         )
     }
 }
-
-const theme = createMuiTheme({
-    palette: {
-        primary: { 500: '#4A004A' }
-    }
-});
 
 const style = theme => ({
     login: {
