@@ -10,7 +10,7 @@ const customInput = props => {
         {lefticon}
         <InputBase  
             {...others}
-            className ={[props.classes.input,props.lefticon&&props.classes.inputWithIcon]}/>
+            className ={[props.classes.input,props.lefticon&&props.classes.inputWithIcon].join(" ")}/>
     </div>
 );}
 
