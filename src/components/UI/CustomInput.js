@@ -4,13 +4,14 @@ import {InputBase, withStyles } from '@material-ui/core';
 
 
 const customInput = props => {
-    const {container, lefticon,classes,containerStyle, ...others} = props;
+    const {container, lefticon,classes,containerStyle,invalid, ...others} = props;
     return (
-    <div className={classes.container} style={containerStyle}>
+    <div className={classes.container +" "+ (invalid?classes.invalid:"")} 
+        style={containerStyle}>
         {lefticon}
         <InputBase  
             {...others}
-            className ={[props.classes.input,props.lefticon&&props.classes.inputWithIcon]}/>
+            className ={[props.classes.input,props.lefticon&&props.classes.inputWithIcon].join(" ")}/>
     </div>
 );}
 
@@ -34,6 +35,9 @@ const style = theme => ({
         paddingLeft:theme.spacing.unit,
         borderLeft:`1px solid #9927B1`,
         marginLeft:theme.spacing.unit
+    },
+    invalid:{
+        borderColor:"red"
     }
 
 });

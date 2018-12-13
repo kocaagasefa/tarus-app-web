@@ -1,4 +1,4 @@
-import {SIGN_IN_REQUEST,SIGN_IN_SUCCESS,SIGN_IN_FAIL,FETCH_USER} from './actionTypes';
+import {SIGN_IN_REQUEST,SIGN_IN_SUCCESS,SIGN_IN_FAIL,FETCH_USER, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAIL} from './actionTypes';
 import {auth,facebookProvider,googleProvider} from '../../config/firebase';
 
 const signInRequest = () => {
@@ -74,14 +74,34 @@ export const authStateChangedListener = () => dispatch => {
   };
 
   
-  export const signUp = data => dispatch => {
+const signUpRequest = () => {
+    return {
+        type:SIGN_UP_REQUEST
+    }
+}
 
-      auth.createUserAndRetrieveDataWithEmailAndPassword(data)
-        .then(res=>{
-
-            return res;
-        })
-        .catch(error=>{
-            console.log("sign up error",error);
-        })
-  }
+const signUpSuccess = () => {
+    return {
+        type:SIGN_UP_SUCCESS
+    }
+}
+const signUpFail = () => {
+    return {
+        type:SIGN_UP_FAIL
+    }
+}
+  export const signUp = (user) => {
+    return dispatch => {
+        dispatch(signUpRequest())
+        return auth.createUserAndRetrieveDataWithEmailAndPassword(user.email,user.password)
+                .then(data=>{
+                    console.log("actions /auth / Sign Up ",data);
+                    return data.user||null;
+                    dispatch(signUpSuccess());
+                }).catch(error=> {
+                    console.log(error);
+                    dispatch(signUpFail());
+                    
+                })
+    }
+}
