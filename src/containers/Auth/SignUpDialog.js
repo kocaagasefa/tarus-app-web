@@ -81,7 +81,7 @@ class SignUpDialog extends Component {
         this.props.signUp({
             email,password,name,surname
         })
-        .then(data=>data&&this.props.onSignUpClose())
+        .then(data=>data&&data.success&&this.props.onSignUpClose())
     }
     checkFormValidity=() => Object.keys(this.state.form).map(key=>this.state.form[key].isValid).every(element=>element)
     render() {

@@ -22,7 +22,7 @@ export const signInWithEmailAndPassword = (email,password) => {
     return dispatch => {
         dispatch(signInRequest());
         return auth.signInWithEmailAndPassword(email,password)
-            .then(res=>dispatch(signInSuccess))
+            .then(res=>dispatch(signInSuccess()))
             .catch(error=> {
                 console.log("auth error", error);
                 dispatch(signInFail());
@@ -40,8 +40,7 @@ export const facebookSignIn = () => {
         dispatch(signInRequest())
         auth.signInWithPopup(facebookProvider)
             .then(res=>{
-                console.log(res);
-                dispatch(signInSuccess)})
+                dispatch(signInSuccess())})
             .catch(error=>{
                 console.log("auth error",error);
                 dispatch(signInFail());
@@ -54,7 +53,7 @@ export const googleSignIn = () => {
     return dispatch => {
         dispatch(signInRequest())
         auth.signInWithPopup(googleProvider)
-            .then(res=>dispatch(signInSuccess))
+            .then(res=>dispatch(signInSuccess()))
             .catch(error=>{
                 console.log("auth error",error);
                 dispatch(signInFail());
@@ -93,12 +92,19 @@ const signUpFail = () => {
   export const signUp = (user) => {
     return dispatch => {
         dispatch(signUpRequest())
-        return auth.createUserAndRetrieveDataWithEmailAndPassword(user.email,user.password)
-                .then(data=>{
-                    console.log("actions /auth / Sign Up ",data);
-                    return data.user||null;
-                    dispatch(signUpSuccess());
-                }).catch(error=> {
+        return auth.createUserWithEmailAndPassword (user.email,user.password)
+                .then(createdUser=>{
+                    console.log("actions /auth / Sign Up ",createdUser);
+                    return auth.currentUser.updateProfile({
+                        displayName:user.name+" "+user.surname
+                    })
+                    
+                }).then(updatedUser=>{
+                    console.log("updated",updatedUser);
+                    dispatch(signUpSuccess(updatedUser))
+                    return {success:true};
+                })
+                .catch(error=> {
                     console.log(error);
                     dispatch(signUpFail());
                     

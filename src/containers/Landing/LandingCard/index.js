@@ -13,7 +13,6 @@ class LandingCard extends Component {
 
     render() {
         const { classes } = this.props;
-        console.log("i18 landing",this.props.t("people"))
         return (
             <Card className={classes.card} onClick={this.props.clicked}>
                 {
