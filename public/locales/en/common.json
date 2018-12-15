@@ -1,0 +1,10 @@
+{
+    "title":"Welcome",
+    "houses":"Houses",
+    "people":"Person",
+    "navbar":{
+        "signin":"Sign In",
+        "signout":"Sign Out",
+        "signup":"Sign Up"
+    }
+}

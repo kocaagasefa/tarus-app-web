@@ -76,7 +76,8 @@ class SignUpDialog extends Component {
         })
     }
     handleSignUp = () => {
-        const {email,password,name,surname} = this.state;
+        //const {email,password,name,surname} = this.state;
+        const [email,password,name,surname] = ["email","password","name","surname"].map(key=>this.state.form[key].value)
         this.props.signUp({
             email,password,name,surname
         })

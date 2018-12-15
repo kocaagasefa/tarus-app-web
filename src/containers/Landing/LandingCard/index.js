@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import { CardContent, ListSubheader } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Ionicon from 'react-ionicons';
+import { withNamespaces } from 'react-i18next';
 
 class LandingCard extends Component {
     panelClick = (path) => {
@@ -12,15 +13,15 @@ class LandingCard extends Component {
 
     render() {
         const { classes } = this.props;
-
+        console.log("i18 landing",this.props.t("people"))
         return (
             <Card className={classes.card} onClick={this.props.clicked}>
                 {
-                    this.props.name === 'EVLER' ?
+                    this.props.name === 'houses' ?
                         <Ionicon icon="ios-home-outline" className={classes.icon} color="white" /> :
                         <Ionicon icon="ios-people-outline" className={classes.icon} color="white" />
                 }
-                <ListSubheader component="div" className={classes.subHeader}>{this.props.name}</ListSubheader>
+                <ListSubheader component="div" className={classes.subHeader}>{this.props.t(this.props.name)}</ListSubheader>
                 <CardContent>
                     {this.props.content}
                 </CardContent>
@@ -52,4 +53,4 @@ const style = theme => ({
     }
 })
 
-export default withStyles(style)(LandingCard);
+export default withStyles(style)(withNamespaces("common")(LandingCard));

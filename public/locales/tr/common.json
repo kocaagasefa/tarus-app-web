@@ -1,0 +1,10 @@
+{
+    "title":"Hoşgeldiniz",
+    "houses":"Evler",
+    "people":"İnsanlar",
+    "navbar":{
+        "signin":"Giriş Yap",
+        "signout":"Çıkış Yap",
+        "signup":"Kaydol"
+    }
+}

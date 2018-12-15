@@ -7,6 +7,7 @@ import SignUpDialog from '../../containers/Auth/SignUpDialog';
 import { signOut } from '../../store/actions';
 
 import './style.css';
+import { withNamespaces } from 'react-i18next';
 
 class Layout extends Component {
     state = {
@@ -37,11 +38,17 @@ class Layout extends Component {
     handleSignUpClose = () => {
         this.setState({ openSignUpDialog: false });
     }
+    handleChangeLanguage = (lng) => {
+        this.props.i18n.changeLanguage(lng);
+    }
 
     render() {
         return (
             <>
                 <NavBar
+                    t={this.props.t}
+                    lng={this.props.lng}
+                    changeLanguage={this.handleChangeLanguage}
                     onSignInOpen={this.handleSignInOpen}
                     onSignUpOpen={this.handleSignUpOpen}
                     user={this.props.user}
@@ -75,4 +82,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout);
+export default connect(mapStateToProps, mapDispatchToProps)(withNamespaces("common")(Layout));

@@ -11,8 +11,8 @@ class Landing extends Component {
         const { classes } = this.props;
         return (
             <div className={classes.landing}>
-                <LandingCard name="EVLER" clicked={(path) => this.panelClicked('/houses')} content={content.home} />
-                <LandingCard name="KİŞİLER" clicked={(path) => this.panelClicked('/roommates')} content={content.roommates}/>
+                <LandingCard name="houses" clicked={(path) => this.panelClicked('/houses')} content={content.home} />
+                <LandingCard name="people" clicked={(path) => this.panelClicked('/roommates')} content={content.roommates}/>
             </div>
         )
     }

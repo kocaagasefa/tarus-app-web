@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles, FormLabel, Chip } from '@material-ui/core';
 
 const navBar = props => {
-    const { classes } = props;
+    const { classes,t } = props;
 
     return (
         <div className={classes.navBar}>
@@ -10,16 +10,18 @@ const navBar = props => {
                 props.user ?
                     <>
                         <Chip className={classes.content} label={props.user.email}></Chip>
-                        <FormLabel className={classes.content} onClick={props.signOut}>Sign Out</FormLabel>
+                        <FormLabel className={classes.content} onClick={props.signOut}>{t('navbar.signout')}</FormLabel>
                     </>
                     :
                     <>
-                        <FormLabel onClick={props.onSignInOpen} className={classes.content}>Giriş Yap</FormLabel>
+                        <FormLabel onClick={props.onSignInOpen} className={classes.content}>{t('navbar.signin')}</FormLabel>
                         <FormLabel disabled className={classes.contentDisable}> | </FormLabel>
-                        <FormLabel onClick={props.onSignUpOpen} className={classes.content}>Kayıt Ol</FormLabel>
+                        <FormLabel onClick={props.onSignUpOpen} className={classes.content}>{t('navbar.signup')}</FormLabel>
                     </>
             }
-    
+                        <FormLabel className={classes.content+" "+ (props.lng==="en"?classes.activeLanguage:"")} onClick={()=>props.changeLanguage('en')}> EN </FormLabel>
+                        
+                        <FormLabel className={classes.content+" "+(props.lng==="tr"?classes.activeLanguage:"")} onClick={()=>props.changeLanguage('tr')}> TR </FormLabel>
         </div>
     )
 };
@@ -42,6 +44,9 @@ const styles = theme => ({
         justifyContent: 'flex-end',
         textAlign: 'center',
         color: '#f3f3f3',
+    },
+    activeLanguage:{
+        fontWeight:"bold"
     }
 })
 
