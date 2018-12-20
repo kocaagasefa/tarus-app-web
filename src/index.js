@@ -10,7 +10,6 @@ import * as serviceWorker from './serviceWorker';
 import i18n from './config/i18n';
 
 import store from './store/configureStore';
-import Landing from './containers/Landing';
 import Login from './containers/Auth/Auth';
 
 const theme = createMuiTheme({
@@ -26,7 +25,6 @@ const app = (
                 <I18nextProvider i18n={i18n}>
                 <CssBaseline />
                 <Switch>
-                    <Route exact path="/" component={Landing} />
                     <Route path="/login" component={Login} />
                     <Route path="*" component={App} />
                 </Switch>

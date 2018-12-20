@@ -95,4 +95,4 @@ const style = theme => ({
     }
 })
 
-export default withNamespaces("common")(withStyles(style)(Landing));
+export default withNamespaces()(withStyles(style)(Landing));

@@ -7,6 +7,7 @@ import Roommates from './containers/Roommates';
 import Profile from './containers/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import {authStateChangedListener} from './store/actions';
+import Landing from './containers/Landing';
 
 import './App.css';
 
@@ -25,6 +26,7 @@ class App extends Component {
           <Route path="/houses" component={Houses} />
           <Route path="/roommates" component= {Roommates} />
           <PrivateRoute path="/profile" component= {Profile} />
+          <Route path="/" component={Landing} />
           <Redirect to="/" />
         </Switch>
       </Layout>
