@@ -6,7 +6,7 @@ const customButton = (props) => {
     const { classes, ...others } = props;
 
     return (
-        <Button className={classes.button+" "+(props.disabled?classes.disabled:"" )} {...others}  />
+        <Button className={classes.button + " " + (props.disabled ? classes.disabled : "")} {...others} />
     )
 }
 
@@ -24,10 +24,9 @@ const style = theme => ({
         borderRadius: '10px',
         backgroundImage: 'linear-gradient(-180deg, #31073D 0%, #9927B1 100%)'
     },
-    disabled:{
-        backgroundImage:"none",
-        backgroundColor:"#7a7a7a"
-
+    disabled: {
+        backgroundImage: "none",
+        backgroundColor: "#7a7a7a"
     }
 })
 

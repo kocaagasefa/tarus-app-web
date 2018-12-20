@@ -6,5 +6,13 @@
         "signin":"Giriş Yap",
         "signout":"Çıkış Yap",
         "signup":"Kaydol"
+    },
+    "homePage": {
+        "homeTitle": "İdeal Evini Bul",
+        "homeContent": "Hemen seçebileceğin yüzlerce ev ilanına göz at, hayalindeki evi bul, dilersen arkadaşlarınla paylaş ve hemen yaşamaya başla",
+        "friendTitle": "İdeal Ev Arkadaşını Bul",
+        "friendContent": "Beraber eve çıkabileceğin, tam da aradığın kişiler ile iletişime geç, ideal ev arkadaşını bul ve hayalindeki evi kur",
+        "btnFriend": "Arkadaş Bul",
+        "btnHome": "Ev Bul"
     }
 }

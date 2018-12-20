@@ -6,5 +6,13 @@
         "signin":"Sign In",
         "signout":"Sign Out",
         "signup":"Sign Up"
+    },
+    "homePage": {
+        "homeTitle": "Find Your Home",
+        "homeContent": "Hemen seçebileceğin yüzlerce ev ilanına göz at, hayalindeki evi bul, dilersen arkadaşlarınla paylaş ve hemen yaşamaya başla",
+        "friendTitle": "Find Your Roommate",
+        "friendContent": "Beraber eve çıkabileceğin, tam da aradığın kişiler ile iletişime geç, ideal ev arkadaşını bul ve hayalindeki evi kur",
+        "btnFriend": "Find Roommate",
+        "btnHome": "Find Home"
     }
 }
