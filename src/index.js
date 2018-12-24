@@ -10,7 +10,6 @@ import * as serviceWorker from './serviceWorker';
 import i18n from './config/i18n';
 
 import store from './store/configureStore';
-import Landing from './containers/Landing';
 import Login from './containers/Auth/Auth';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
 import MomentUtils from "@date-io/moment";
@@ -25,6 +24,7 @@ const app = (
     <BrowserRouter>
         <Provider store={store()}>
             <MuiThemeProvider theme={theme}>
+<<<<<<< HEAD
                 <MuiPickersUtilsProvider utils={MomentUtils}>
                     <I18nextProvider i18n={i18n}>
                         <CssBaseline />
@@ -35,6 +35,16 @@ const app = (
                         </Switch>
                     </I18nextProvider>
                 </MuiPickersUtilsProvider>
+=======
+                <I18nextProvider i18n={i18n}>
+                <CssBaseline />
+                <Switch>
+                    <Route path="/login" component={Login} />
+                    <Route path="*" component={App} />
+                </Switch>
+                </I18nextProvider>
+
+>>>>>>> f0b62516b39a6dd73629713227e25889aa000751
             </MuiThemeProvider>
         </Provider>
     </BrowserRouter>
