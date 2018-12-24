@@ -34,5 +34,17 @@
     ],
     "general": {
         "selectJob": "Meslek Seçiniz..."
+    },
+    "buttons": {
+        "signUp": "Kaydol",
+        "logIn": "Giriş Yap",
+        "facebook": "Facebook ile Giriş Yap",
+        "google": "Google ile Giriş Yap"
+    },
+    "labels": {
+        "password": "Şifre",
+        "confirmPassword": "Şifre(Tekrar)",
+        "name": "İsim",
+        "surname": "Soyadı"
     }
 }

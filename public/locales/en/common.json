@@ -34,5 +34,17 @@
     ],
     "general": {
         "selectJob": "Select a Job..."
+    },
+    "buttons": {
+        "signUp": "Sign Up",
+        "logIn": "Log in",
+        "facebook": "Log in with Facebook",
+        "google": "Log in with Google"
+    },
+    "labels": {
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "name": "Name",
+        "surname": "Surname"
     }
 }
