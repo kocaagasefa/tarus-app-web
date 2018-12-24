@@ -24,7 +24,6 @@ const app = (
     <BrowserRouter>
         <Provider store={store()}>
             <MuiThemeProvider theme={theme}>
-<<<<<<< HEAD
                 <MuiPickersUtilsProvider utils={MomentUtils}>
                     <I18nextProvider i18n={i18n}>
                         <CssBaseline />
@@ -35,16 +34,6 @@ const app = (
                         </Switch>
                     </I18nextProvider>
                 </MuiPickersUtilsProvider>
-=======
-                <I18nextProvider i18n={i18n}>
-                <CssBaseline />
-                <Switch>
-                    <Route path="/login" component={Login} />
-                    <Route path="*" component={App} />
-                </Switch>
-                </I18nextProvider>
-
->>>>>>> f0b62516b39a6dd73629713227e25889aa000751
             </MuiThemeProvider>
         </Provider>
     </BrowserRouter>
