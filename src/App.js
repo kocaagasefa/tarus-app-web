@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Layout from './hoc/Layout';
 import Houses from './containers/Houses';
 import Roommates from './containers/Roommates';
-import Profile from './containers/Profile';
+import Profile from './containers/Profile/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import {authStateChangedListener} from './store/actions';
 
