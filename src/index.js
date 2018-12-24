@@ -28,7 +28,6 @@ const app = (
                     <I18nextProvider i18n={i18n}>
                         <CssBaseline />
                         <Switch>
-                            <Route exact path="/" component={Landing} />
                             <Route path="/login" component={Login} />
                             <Route path="*" component={App} />
                         </Switch>
