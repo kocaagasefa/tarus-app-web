@@ -7,6 +7,7 @@ import {
     VpnKey as PasswordIcon
 } from '@material-ui/icons'
 import { signInWithEmailAndPassword, googleSignIn, facebookSignIn } from '../../store/actions';
+import { withNamespaces } from 'react-i18next';
 
 class SignInFields extends Component {
     state = {
@@ -43,6 +44,8 @@ class SignInFields extends Component {
     }
 
     render() {
+        const { t } = this.props;
+
         return (
             <>
                 <Input variant="outlined"
@@ -54,15 +57,15 @@ class SignInFields extends Component {
                 />
                 <Input variant="outlined"
                     lefticon={<PasswordIcon style={{ color: "white" }} />}
-                    placeholder="Password"
+                    placeholder={t('labels.password')}
                     name="password"
                     type="password"
                     value={this.state.password}
                     onChange={this.onInputChangeHandler}
                 />
-                <Button onClick={() => this.handleClose()}>Login</Button>
-                <Button onClick={this.handleGoogleClose}>Login with Google</Button>
-                <Button onClick={this.handleFacebookClose}>Login with Facebook</Button>
+                <Button onClick={() => this.handleClose()}>{t('buttons.logIn')}</Button>
+                <Button onClick={this.handleGoogleClose}>{t('buttons.facebook')}</Button>
+                <Button onClick={this.handleFacebookClose}>{t('buttons.google')}</Button>
             </>
         );
     }
@@ -76,4 +79,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(SignInFields);
+export default connect(null, mapDispatchToProps)(withNamespaces("")(SignInFields));

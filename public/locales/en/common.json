@@ -14,5 +14,37 @@
         "friendContent": "Beraber eve çıkabileceğin, tam da aradığın kişiler ile iletişime geç, ideal ev arkadaşını bul ve hayalindeki evi kur",
         "btnFriend": "Find Roommate",
         "btnHome": "Find Home"
+    },
+    "profilePage": {
+        "addPhoto": "Add Profile Photo",
+        "birthDate": "Birth Date",
+        "displayName": "User Name",
+        "phoneNumber": "Phone Number",
+        "job": "Job"
+    },
+    "jobs": [
+        { "value": 1, "text": "Secretary" },
+        { "value": 2, "text": "Editor" },
+        { "value": 3, "text": "Graphic Designer" },
+        { "value": 4, "text": "Social Media Manager" },
+        { "value": 5, "text": "Architect" },
+        { "value": 6, "text": "Computer Engineer" },
+        { "value": 7, "text": "Mechanical Engineer" },
+        { "value": 8, "text": "Electrical Engineer" }
+    ],
+    "general": {
+        "selectJob": "Select a Job..."
+    },
+    "buttons": {
+        "signUp": "Sign Up",
+        "logIn": "Log in",
+        "facebook": "Log in with Facebook",
+        "google": "Log in with Google"
+    },
+    "labels": {
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "name": "Name",
+        "surname": "Surname"
     }
 }

@@ -5,12 +5,14 @@ import App from './App';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { MuiThemeProvider, CssBaseline, createMuiTheme } from '@material-ui/core';
-import { I18nextProvider} from 'react-i18next';
+import { I18nextProvider } from 'react-i18next';
 import * as serviceWorker from './serviceWorker';
 import i18n from './config/i18n';
 
 import store from './store/configureStore';
 import Login from './containers/Auth/Auth';
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import MomentUtils from "@date-io/moment";
 
 const theme = createMuiTheme({
     typography: {
@@ -22,14 +24,15 @@ const app = (
     <BrowserRouter>
         <Provider store={store()}>
             <MuiThemeProvider theme={theme}>
-                <I18nextProvider i18n={i18n}>
-                <CssBaseline />
-                <Switch>
-                    <Route path="/login" component={Login} />
-                    <Route path="*" component={App} />
-                </Switch>
-                </I18nextProvider>
-
+                <MuiPickersUtilsProvider utils={MomentUtils}>
+                    <I18nextProvider i18n={i18n}>
+                        <CssBaseline />
+                        <Switch>
+                            <Route path="/login" component={Login} />
+                            <Route path="*" component={App} />
+                        </Switch>
+                    </I18nextProvider>
+                </MuiPickersUtilsProvider>
             </MuiThemeProvider>
         </Provider>
     </BrowserRouter>

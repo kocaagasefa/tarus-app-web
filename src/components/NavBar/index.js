@@ -25,7 +25,6 @@ const navBar = props => {
                                 :
                                 <>
                                     <Button onClick={props.onSignInOpen} className={classes.content} color="inherit">{t('navbar.signin')}</Button>
-
                                     <Button onClick={props.onSignUpOpen} className={classes.content} color="inherit">{t('navbar.signup')}</Button>
                                 </>
                         }

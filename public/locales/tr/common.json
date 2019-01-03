@@ -1,11 +1,11 @@
 {
-    "title":"Hoşgeldiniz",
-    "houses":"Evler",
-    "people":"İnsanlar",
-    "navbar":{
-        "signin":"Giriş Yap",
-        "signout":"Çıkış Yap",
-        "signup":"Kaydol"
+    "title": "Hoşgeldiniz",
+    "houses": "Evler",
+    "people": "İnsanlar",
+    "navbar": {
+        "signin": "Giriş Yap",
+        "signout": "Çıkış Yap",
+        "signup": "Kaydol"
     },
     "homePage": {
         "homeTitle": "İdeal Evini Bul",
@@ -14,5 +14,37 @@
         "friendContent": "Beraber eve çıkabileceğin, tam da aradığın kişiler ile iletişime geç, ideal ev arkadaşını bul ve hayalindeki evi kur",
         "btnFriend": "Arkadaş Bul",
         "btnHome": "Ev Bul"
+    },
+    "profilePage": {
+        "addPhoto": "Profil Fotoğrafı Ekle",
+        "birthDate": "Doğum Tarihi",
+        "displayName": "Kullanıcı Adı",
+        "phoneNumber": "Telefon Numarası",
+        "job": "Meslek"
+    },
+    "jobs": [
+        { "value": 1, "text": "Sekreter" },
+        { "value": 2, "text": "Editör" },
+        { "value": 3, "text": "Grafik Tasarımcı" },
+        { "value": 4, "text": "Sosyal Medya Yöneticisi" },
+        { "value": 5, "text": "Mimar" },
+        { "value": 6, "text": "Bilgisayar Mühendisi" },
+        { "value": 7, "text": "Makine Mühendisi" },
+        { "value": 8, "text": "Elektrik-Elektronik Mühendisi" }
+    ],
+    "general": {
+        "selectJob": "Meslek Seçiniz..."
+    },
+    "buttons": {
+        "signUp": "Kaydol",
+        "logIn": "Giriş Yap",
+        "facebook": "Facebook ile Giriş Yap",
+        "google": "Google ile Giriş Yap"
+    },
+    "labels": {
+        "password": "Şifre",
+        "confirmPassword": "Şifre(Tekrar)",
+        "name": "İsim",
+        "surname": "Soyadı"
     }
 }
