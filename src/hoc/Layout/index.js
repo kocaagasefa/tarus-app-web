@@ -10,7 +10,7 @@ import { withNamespaces } from 'react-i18next';
 import classNames from 'classnames'
 import { withStyles } from '@material-ui/core';
 
-const drawerWith =300;
+const drawerWith = 300;
 
 class Layout extends Component {
     state = {
@@ -18,9 +18,9 @@ class Layout extends Component {
         password: "",
         openSignInDialog: false,
         openSignUpDialog: false,
-        openDrawer:false
+        openDrawer: false
     }
-    
+
     onInputChangeHandler = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -45,9 +45,9 @@ class Layout extends Component {
     handleChangeLanguage = (lng) => {
         this.props.i18n.changeLanguage(lng);
     }
-    handleDrawerToggle = () => this.setState(prevState=>{
+    handleDrawerToggle = () => this.setState(prevState => {
         return {
-            openDrawer:!prevState.openDrawer
+            openDrawer: !prevState.openDrawer
         }
     })
 
@@ -73,12 +73,12 @@ class Layout extends Component {
                     open={this.state.openSignUpDialog}
                     onSignUpClose={this.handleSignUpClose}
                 />
-                
+
                 <Drawer open={this.state.openDrawer} />
                 <main className={classNames(classes.content, {
-            [classes.contentShift]: this.state.openDrawer,
-          })}>
-                
+                    [classes.contentShift]: this.state.openDrawer,
+                })}>
+
                     {this.props.children}
                 </main>
             </>
@@ -98,23 +98,22 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const styles= theme => ({
+const styles = theme => ({
     content: {
         flexGrow: 1,
-        padding: theme.spacing.unit * 3,
         transition: theme.transitions.create('margin', {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen,
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
         }),
         marginLeft: 0,
-      },
-      contentShift: {
+    },
+    contentShift: {
         transition: theme.transitions.create('margin', {
-          easing: theme.transitions.easing.easeOut,
-          duration: theme.transitions.duration.enteringScreen,
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
         }),
         marginLeft: drawerWith,
-      },
+    },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNamespaces("")(withStyles(styles) (Layout)));
+export default connect(mapStateToProps, mapDispatchToProps)(withNamespaces("")(withStyles(styles)(Layout)));

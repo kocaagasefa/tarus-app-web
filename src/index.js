@@ -12,7 +12,7 @@ import i18n from './config/i18n';
 import store from './store/configureStore';
 import Login from './containers/Auth/Auth';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
-import MomentUtils from "@date-io/moment";
+import DateFnsUtils from "@date-io/date-fns";
 
 const theme = createMuiTheme({
     typography: {
@@ -24,7 +24,7 @@ const app = (
     <BrowserRouter>
         <Provider store={store()}>
             <MuiThemeProvider theme={theme}>
-                <MuiPickersUtilsProvider utils={MomentUtils}>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <I18nextProvider i18n={i18n}>
                         <CssBaseline />
                         <Switch>
