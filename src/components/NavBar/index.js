@@ -1,7 +1,7 @@
 import React from 'react';
-import { withStyles, Chip, AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core';
+import { withStyles, FormLabel, Chip, AppBar, Toolbar, IconButton, Typography, Button, Hidden, withWidth } from '@material-ui/core';
 import { Menu, ClassSharp } from '@material-ui/icons';
-
+import compose from 'recompose/compose';
 const navBar = props => {
     const { classes, t, toggleDrawer } = props;
 
@@ -13,14 +13,14 @@ const navBar = props => {
                         <Menu />
                     </IconButton>
                     <Typography className={classes.brand} variant="h6" color="inherit">
-                        HomeBine
+                        HOMEBINE
                 </Typography>
                     <div>
                         {
                             props.user ?
                                 <>
                                     <Chip className={classes.content} label={props.user.email}></Chip>
-                                    <Button className={classes.content} onClick={props.signOut} color="inherit">{t('navbar.signout')}</Button>
+                                    <FormLabel className={classes.content} onClick={props.signOut}>{t('navbar.signout')}</FormLabel>
                                 </>
                                 :
                                 <>
@@ -30,8 +30,13 @@ const navBar = props => {
                         }
 
                     </div>
-                    <Button color="inherit" className={classes.content + " " + (props.lng === "en" ? classes.activeLanguage : "")} onClick={() => props.changeLanguage('en')}> EN </Button>
-                    <Button color="inherit" className={classes.content + " " + (props.lng === "tr" ? classes.activeLanguage : "")} onClick={() => props.changeLanguage('tr')}> TR </Button>
+                    <Hidden mdDown>
+                        <Button color="inherit" className={classes.content + " " + (props.lng === "en" ? classes.activeLanguage : "")} onClick={() => props.changeLanguage('en')}> EN </Button>
+                        <Button color="inherit" className={classes.content + " " + (props.lng === "tr" ? classes.activeLanguage : "")} onClick={() => props.changeLanguage('tr')}> TR </Button>
+                    </Hidden>
+
+
+
                 </Toolbar>
             </AppBar>
         </div>
@@ -59,4 +64,4 @@ const styles = theme => ({
     },
 })
 
-export default withStyles(styles)(navBar);
+export default compose(withStyles(styles),withWidth())(navBar);

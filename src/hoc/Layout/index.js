@@ -5,7 +5,6 @@ import SignInDialog from '../../containers/Auth/SignInDialog';
 import SignUpDialog from '../../containers/Auth/SignUpDialog';
 import Drawer from '../../components/Drawer/Drawer';
 import { signOut } from '../../store/actions';
-import './style.css';
 import { withNamespaces } from 'react-i18next';
 import classNames from 'classnames'
 import { withStyles } from '@material-ui/core';
