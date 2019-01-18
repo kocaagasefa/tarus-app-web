@@ -10,6 +10,7 @@ import {authStateChangedListener} from './store/actions';
 import Landing from './containers/Landing';
 
 import './App.css';
+import NewHouse from './components/NewHouse/NewHouse';
 
 class App extends Component {
   componentDidMount(){
@@ -23,6 +24,7 @@ class App extends Component {
     return (
       <Layout>
         <Switch>
+          <PrivateRoute path="/houses/new" component={NewHouse} />
           <Route path="/houses" component={Houses} />
           <Route path="/roommates" component= {Roommates} />
           <PrivateRoute path="/profile" component= {Profile} />

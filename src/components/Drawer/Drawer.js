@@ -5,7 +5,6 @@ class CustomDrawer extends Component  {
 
     render(){
         const { classes,open } = this.props;
-        console.log(open)
         return(
             <nav className={classes.drawer}>
             <Hidden>

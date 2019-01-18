@@ -100,7 +100,7 @@ class SignUpDialog extends Component {
                         lefticon={<EmailIcon style={{ color: "white" }} />}
                         placeholder="Email"
                         name="email"
-                        value={this.state.form.email.value}
+                        value={email.value}
                         onChange={this.handleChange}
                         invalid={!email.isValid && email.touched}
                     />
@@ -109,7 +109,7 @@ class SignUpDialog extends Component {
                         placeholder={t('labels.password')}
                         name="password"
                         type="password"
-                        value={this.state.form.password.value}
+                        value={password.value}
                         onChange={this.handleChange}
                         invalid={!password.isValid && password.touched}
                     />
@@ -118,21 +118,21 @@ class SignUpDialog extends Component {
                         placeholder={t('labels.confirmPassword')}
                         name="confirmPassword"
                         type="password"
-                        value={this.state.form.confirmPassword.value}
+                        value={confirmPassword.value}
                         onChange={this.handleChange}
                         invalid={!confirmPassword.isValid && confirmPassword.touched}
                     />
                     <Input
                         placeholder={t('labels.name')}
                         name="name"
-                        value={this.state.form.name.value}
+                        value={name.value}
                         onChange={this.handleChange}
                         invalid={!name.isValid && name.touched}
                     />
                     <Input
                         placeholder={t('labels.surname')}
                         name="surname"
-                        value={this.state.form.surname.value}
+                        value={surname.value}
                         onChange={this.handleChange}
                         invalid={!surname.isValid && surname.touched}
                     />
