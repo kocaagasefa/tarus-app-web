@@ -64,8 +64,8 @@ class SignInFields extends Component {
                     onChange={this.onInputChangeHandler}
                 />
                 <Button onClick={() => this.handleClose()}>{t('buttons.logIn')}</Button>
-                <Button onClick={this.handleGoogleClose}>{t('buttons.facebook')}</Button>
-                <Button onClick={this.handleFacebookClose}>{t('buttons.google')}</Button>
+                <Button onClick={this.handleGoogleClose}>{t('buttons.google')}</Button>
+                <Button onClick={this.handleFacebookClose}>{t('buttons.facebook')}</Button>
             </>
         );
     }
