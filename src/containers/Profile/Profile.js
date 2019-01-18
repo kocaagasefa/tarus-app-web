@@ -17,6 +17,10 @@ import { databaseRef, storageRef } from '../../config/firebase';
 class Profile extends Component {
     state = {
         form: {
+            displayName: {
+                isValid: true,
+                value: this.props.user.displayName
+            },
             email: {
                 isValid: true,
                 value: this.props.user.email,
@@ -47,7 +51,12 @@ class Profile extends Component {
         }
     }
 
+    componentDidMount() {
+        console.log(this.props.user)
+    }
+
     thirdPartyInputChangedHandler = (value, name) => {
+        debugger;
         this.setState(prevState => {
             return {
                 form: formDataUpdate(prevState.form, value, name)
@@ -83,13 +92,13 @@ class Profile extends Component {
     };
 
     saveBtnClicked = () => {
-        const blob = new Blob([this.state.form.profilePhoto.data], { type: "image/jpeg" });
         storageRef.child("/profile_photos/" + this.props.user.uid + "/profilePhoto.jpg")
-            .put(blob, { contentType: "image/jpeg" }).then(url => {
-                console.log(url);
+            .putString(this.state.form.profilePhoto.data, "data_url").then(url => {
+                debugger;
+                //console.log(blob);
             })
         const user = {
-            phoneNumber: this.state.form.phone.value,
+            phone: this.state.form.phone.value,
             birthDate: this.state.form.birthDate.value.getTime(),
             job: this.state.form.job.value
         };
@@ -124,7 +133,7 @@ class Profile extends Component {
                         </Tooltip>
                     </label>
                     <Label>{t('profilePage.displayName')}</Label>
-                    <Input disabled value={user.displayName ? user.displayName : ""} />
+                    <Input disabled value={this.props.user.displayName ? this.props.user.displayName : ""} />
                     <Label>E-Mail</Label>
                     <Input value={this.state.form.email.value} name="email" onChange={this.formElementChangedHandler} />
                     <Label>{t('profilePage.birthDate')}</Label>
