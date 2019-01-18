@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, FormLabel, Chip, AppBar, Toolbar, IconButton, Typography, Button, Hidden, withWidth } from '@material-ui/core';
+import { withStyles, Chip, AppBar, Toolbar, IconButton, Typography, Button, Hidden, withWidth } from '@material-ui/core';
 import { Menu, ClassSharp } from '@material-ui/icons';
 import compose from 'recompose/compose';
 const navBar = props => {
@@ -20,7 +20,7 @@ const navBar = props => {
                             props.user ?
                                 <>
                                     <Chip className={classes.content} label={props.user.email}></Chip>
-                                    <FormLabel className={classes.content} onClick={props.signOut}>{t('navbar.signout')}</FormLabel>
+                                    <Button className={classes.content} onClick={props.signOut} color="inherit">{t('navbar.signout')}</Button>
                                 </>
                                 :
                                 <>
@@ -42,8 +42,6 @@ const navBar = props => {
         </div>
     )
 };
-
-
 
 const styles = theme => ({
     navBar: {

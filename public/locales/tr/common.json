@@ -16,6 +16,8 @@
         "btnHome": "Ev Bul"
     },
     "profilePage": {
+        "profileTitle": "Kendini Tanıt",
+        "profileContent": "Sana en uygun evi ve arkadaşları bulabilmene yardımcı olmamız için sorularımızı cevaplandırarak profilini detaylandır.",
         "addPhoto": "Profil Fotoğrafı Ekle",
         "birthDate": "Doğum Tarihi",
         "displayName": "Kullanıcı Adı",
@@ -23,16 +25,17 @@
         "job": "Meslek"
     },
     "jobs": [
-        { "value": 1, "text": "Sekreter" },
-        { "value": 2, "text": "Editör" },
-        { "value": 3, "text": "Grafik Tasarımcı" },
-        { "value": 4, "text": "Sosyal Medya Yöneticisi" },
-        { "value": 5, "text": "Mimar" },
-        { "value": 6, "text": "Bilgisayar Mühendisi" },
-        { "value": 7, "text": "Makine Mühendisi" },
-        { "value": 8, "text": "Elektrik-Elektronik Mühendisi" }
+        { "value": "secretary", "text": "Sekreter" },
+        { "value": "editor", "text": "Editör" },
+        { "value": "graphicDesigner", "text": "Grafik Tasarımcı" },
+        { "value": "socialMediaDesigner", "text": "Sosyal Medya Yöneticisi" },
+        { "value": "architect", "text": "Mimar" },
+        { "value": "computerEngineer", "text": "Bilgisayar Mühendisi" },
+        { "value": "mechanicEngineer", "text": "Makine Mühendisi" },
+        { "value": "electricalEngineer", "text": "Elektrik-Elektronik Mühendisi" }
     ],
     "general": {
+        "save": "Kaydet",
         "selectJob": "Meslek Seçiniz..."
     },
     "buttons": {

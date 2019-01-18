@@ -21,28 +21,28 @@ const customInput = props => {
 );}
 
 const style = theme => ({
-    container:{
-        border:"1px solid #9927B1",
-        borderRadius:theme.spacing.unit,
-        backgroundColor:"rgba(255,255,255,.1)",
-        padding:theme.spacing.unit,
-        display:"flex",
-        alignItems:"center",
-        margin :theme.spacing.unit
+    container: {
+        border: "1px solid #9927B1",
+        borderRadius: theme.spacing.unit,
+        backgroundColor: "rgba(255,255,255,.1)",
+        padding: theme.spacing.unit,
+        display: "flex",
+        alignItems: "center",
+        margin: theme.spacing.unit
     },
-    input:{
-        color:"white",
-        width:"100%",
-        boxSizing:"border-box",
-        padding:"3px 0"
+    input: {
+        color: "white",
+        width: "100%",
+        boxSizing: "border-box",
+        padding: "3px 0"
     },
-    inputWithIcon:{
-        paddingLeft:theme.spacing.unit,
-        borderLeft:`1px solid #9927B1`,
-        marginLeft:theme.spacing.unit
+    inputWithIcon: {
+        paddingLeft: theme.spacing.unit,
+        borderLeft: `1px solid #9927B1`,
+        marginLeft: theme.spacing.unit
     },
-    invalid:{
-        borderColor:"red"
+    invalid: {
+        borderColor: "red"
     }
 
 });

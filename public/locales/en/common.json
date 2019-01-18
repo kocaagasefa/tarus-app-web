@@ -16,6 +16,8 @@
         "btnHome": "Find Home"
     },
     "profilePage": {
+        "profileTitle": "About You",
+        "profileContent": "Sana en uygun evi ve arkadaşları bulabilmene yardımcı olmamız için sorularımızı cevaplandırarak profilini detaylandır.",
         "addPhoto": "Add Profile Photo",
         "birthDate": "Birth Date",
         "displayName": "User Name",
@@ -23,16 +25,17 @@
         "job": "Job"
     },
     "jobs": [
-        { "value": 1, "text": "Secretary" },
-        { "value": 2, "text": "Editor" },
-        { "value": 3, "text": "Graphic Designer" },
-        { "value": 4, "text": "Social Media Manager" },
-        { "value": 5, "text": "Architect" },
-        { "value": 6, "text": "Computer Engineer" },
-        { "value": 7, "text": "Mechanical Engineer" },
-        { "value": 8, "text": "Electrical Engineer" }
+        { "value": "secretary", "text": "Secretary" },
+        { "value": "editor", "text": "Editor" },
+        { "value": "graphicDesigner", "text": "Graphic Designer" },
+        { "value": "socialMedia", "text": "Social Media Manager" },
+        { "value": "architect", "text": "Architect" },
+        { "value": "computerEngineer", "text": "Computer Engineer" },
+        { "value": "mechanicEngineer", "text": "Mechanical Engineer" },
+        { "value": "electricalEngineer", "text": "Electrical Engineer" }
     ],
     "general": {
+        "save": "Save",
         "selectJob": "Select a Job..."
     },
     "buttons": {
