@@ -1,4 +1,12 @@
-import { SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_FAIL, FETCH_USER, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAIL } from './actionTypes';
+import {
+    SIGN_IN_REQUEST,
+    SIGN_IN_SUCCESS,
+    SIGN_IN_FAIL,
+    FETCH_USER,
+    SIGN_UP_REQUEST,
+    SIGN_UP_SUCCESS,
+    SIGN_UP_FAIL
+} from './actionTypes';
 import { auth, facebookProvider, googleProvider, databaseRef } from '../../config/firebase';
 
 const signInRequest = () => {
@@ -64,13 +72,13 @@ export const googleSignIn = () => {
 
 export const authStateChangedListener = () => dispatch => {
     return auth.onAuthStateChanged(user => {
-        if(!user) {
+        if (!user) {
             dispatch({
                 type: FETCH_USER,
                 user
             });
         }
-        else{
+        else {
             databaseRef.child('/users/' + user.uid).once('value')
                 .then((snapshot) => {
                     user.phone = snapshot.val().phone;

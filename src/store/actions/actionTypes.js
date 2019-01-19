@@ -13,3 +13,5 @@ export const FETCH_USER = "FETCH_USER";
 export const ADD_HOUSE_REQUEST = "ADD_HOUSE_REQUEST";
 export const ADD_HOUSE_SUCCESS = "ADD_HOUSE_SUCCESS";
 export const ADD_HOUSE_FAIL = "ADD_HOUSE_FAIL";
+
+
