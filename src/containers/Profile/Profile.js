@@ -114,7 +114,7 @@ class Profile extends Component {
     checkFormValidity = () => Object.keys(this.state.form).map(key => this.state.form[key].isValid).every(element => element)
 
     render() {
-        const { classes, user, t } = this.props;
+        const { classes, t } = this.props;
 
         return (
             <div className={classes.flex}>
