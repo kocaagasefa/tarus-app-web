@@ -12,7 +12,7 @@ import Button from '../../components/UI/CustomButton';
 import Input from '../../components/UI/CustomInput';
 import Label from '../../components/UI/CustomLabel';
 import { formDataUpdate } from '../../helpers/validate';
-import { databaseRef, storageRef } from '../../config/firebase';
+import { databaseRef, storageRef, auth } from '../../config/firebase';
 
 class Profile extends Component {
     state = {
@@ -52,13 +52,11 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        debugger;
         console.log(Date(this.props.user.birthDate))
         console.log(this.props.user)
     }
 
     thirdPartyInputChangedHandler = (value, name) => {
-        debugger;
         this.setState(prevState => {
             return {
                 form: formDataUpdate(prevState.form, value, name)
@@ -67,6 +65,7 @@ class Profile extends Component {
     };
 
     formElementChangedHandler = event => {
+        debugger;
         let { name, value, files } = event.target;
 
         if (files) {
@@ -94,12 +93,16 @@ class Profile extends Component {
     };
 
     saveBtnClicked = () => {
-        // storageRef.child("/profile_photos/" + this.props.user.uid + "/profilePhoto.jpg")
-        //     .putString(this.state.form.profilePhoto.data, "data_url").then(url => {
-        //         debugger;
-        //         //console.log(blob);
-        //     })
-            
+        /* storageRef.child("/profile_photos/" + this.props.user.uid + "/profilePhoto.jpg")
+            .putString(this.state.form.profilePhoto.data, "data_url").then(snapshot => {
+                snapshot.ref.getDownloadURL().then(function (url) {
+                    debugger;
+                    return auth.currentUser.updateProfile({
+                        photoURL: url
+                    })
+                })
+            }) */
+
         const user = {
             phone: this.state.form.phone.value,
             birthDate: this.state.form.birthDate.value.getTime(),
@@ -113,8 +116,6 @@ class Profile extends Component {
     render() {
         const { classes, user, t } = this.props;
 
-        debugger;
-        console.log(this.state.form);
         return (
             <div className={classes.flex}>
                 <div className={classes.leftSide}>
