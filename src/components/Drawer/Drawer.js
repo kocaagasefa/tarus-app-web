@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, withStyles, Hidden } from '@material-ui/core';
-import { Inbox, Mail } from '@material-ui/icons';
+import { Mail, Person } from '@material-ui/icons';
 
 class CustomDrawer extends Component {
 
   render() {
     const { classes, open } = this.props;
-    
+
     return (
       <nav className={classes.drawer}>
         <Hidden>
@@ -23,7 +23,7 @@ class CustomDrawer extends Component {
               {
                 ['Profile Page', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                   <ListItem button key={text}>
-                    <ListItemIcon>{index % 2 === 0 ? <Inbox /> : <Mail />}</ListItemIcon>
+                    <ListItemIcon>{index % 2 === 0 ? <Person /> : <Mail />}</ListItemIcon>
                     <ListItemText primary={text} />
                   </ListItem>
                 ))
@@ -33,7 +33,7 @@ class CustomDrawer extends Component {
             <List>
               {['All mail', 'Trash', 'Spam'].map((text, index) => (
                 <ListItem button key={text}>
-                  <ListItemIcon>{index % 2 === 0 ? <Inbox /> : <Mail />}</ListItemIcon>
+                  <ListItemIcon>{index % 2 === 0 ? <Person /> : <Mail />}</ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItem>
               ))}
