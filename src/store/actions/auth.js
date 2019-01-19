@@ -1,29 +1,29 @@
-import {SIGN_IN_REQUEST,SIGN_IN_SUCCESS,SIGN_IN_FAIL,FETCH_USER, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAIL} from './actionTypes';
-import {auth,facebookProvider,googleProvider} from '../../config/firebase';
+import { SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_FAIL, FETCH_USER, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAIL } from './actionTypes';
+import { auth, facebookProvider, googleProvider, databaseRef } from '../../config/firebase';
 
 const signInRequest = () => {
     return {
-        type:SIGN_IN_REQUEST
+        type: SIGN_IN_REQUEST
     }
 }
 const signInSuccess = () => {
     return {
-        type:SIGN_IN_SUCCESS
+        type: SIGN_IN_SUCCESS
     }
 }
 const signInFail = () => {
     return {
-        type:SIGN_IN_FAIL
+        type: SIGN_IN_FAIL
     }
 }
 
 
-export const signInWithEmailAndPassword = (email,password) => {
+export const signInWithEmailAndPassword = (email, password) => {
     return dispatch => {
         dispatch(signInRequest());
-        return auth.signInWithEmailAndPassword(email,password)
-            .then(res=>dispatch(signInSuccess()))
-            .catch(error=> {
+        return auth.signInWithEmailAndPassword(email, password)
+            .then(res => dispatch(signInSuccess()))
+            .catch(error => {
                 console.log("auth error", error);
                 dispatch(signInFail());
             });
@@ -36,13 +36,14 @@ export const signOut = () => {
 }
 export const facebookSignIn = () => {
     return dispatch => {
-        
+
         dispatch(signInRequest())
         auth.signInWithPopup(facebookProvider)
-            .then(res=>{
-                dispatch(signInSuccess())})
-            .catch(error=>{
-                console.log("auth error",error);
+            .then(res => {
+                dispatch(signInSuccess())
+            })
+            .catch(error => {
+                console.log("auth error", error);
                 dispatch(signInFail());
             });
     }
@@ -53,9 +54,9 @@ export const googleSignIn = () => {
     return dispatch => {
         dispatch(signInRequest())
         auth.signInWithPopup(googleProvider)
-            .then(res=>dispatch(signInSuccess()))
-            .catch(error=>{
-                console.log("auth error",error);
+            .then(res => dispatch(signInSuccess()))
+            .catch(error => {
+                console.log("auth error", error);
                 dispatch(signInFail());
             });
     }
@@ -63,51 +64,64 @@ export const googleSignIn = () => {
 
 export const authStateChangedListener = () => dispatch => {
     return auth.onAuthStateChanged(user => {
-        console.log("user",user)
-        dispatch({
-          type: FETCH_USER,
-          user
-        });
-        
-    });
-  };
+        if(!user) {
+            dispatch({
+                type: FETCH_USER,
+                user
+            });
+        }
+        else{
+            databaseRef.child('/users/' + user.uid).once('value')
+                .then((snapshot) => {
+                    user.phone = snapshot.val().phone;
+                    user.birthDate = snapshot.val().birthDate;
+                    user.job = snapshot.val().job;
 
-  
+                    dispatch({
+                        type: FETCH_USER,
+                        user
+                    });
+                })
+        }
+    });
+};
+
+
 const signUpRequest = () => {
     return {
-        type:SIGN_UP_REQUEST
+        type: SIGN_UP_REQUEST
     }
 }
 
 const signUpSuccess = () => {
     return {
-        type:SIGN_UP_SUCCESS
+        type: SIGN_UP_SUCCESS
     }
 }
 const signUpFail = () => {
     return {
-        type:SIGN_UP_FAIL
+        type: SIGN_UP_FAIL
     }
 }
-  export const signUp = (user) => {
+export const signUp = (user) => {
     return dispatch => {
         dispatch(signUpRequest())
-        return auth.createUserWithEmailAndPassword (user.email,user.password)
-                .then(createdUser=>{
-                    console.log("actions /auth / Sign Up ",createdUser);
-                    return auth.currentUser.updateProfile({
-                        displayName:user.name+" "+user.surname
-                    })
-                    
-                }).then(updatedUser=>{
-                    console.log("updated",updatedUser);
-                    dispatch(signUpSuccess(updatedUser))
-                    return {success:true};
+        return auth.createUserWithEmailAndPassword(user.email, user.password)
+            .then(createdUser => {
+                console.log("actions /auth / Sign Up ", createdUser);
+                return auth.currentUser.updateProfile({
+                    displayName: user.name + " " + user.surname
                 })
-                .catch(error=> {
-                    console.log(error);
-                    dispatch(signUpFail());
-                    
-                })
+
+            }).then(updatedUser => {
+                console.log("updated", updatedUser);
+                dispatch(signUpSuccess(updatedUser))
+                return { success: true };
+            })
+            .catch(error => {
+                console.log(error);
+                dispatch(signUpFail());
+
+            })
     }
 }

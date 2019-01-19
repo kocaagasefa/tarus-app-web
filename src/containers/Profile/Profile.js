@@ -31,18 +31,18 @@ class Profile extends Component {
             },
             birthDate: {
                 isValid: true,
-                value: new Date(),
+                value: this.props.user.birthDate ? new Date(this.props.user.birthDate) : new Date(),
                 validityRules: {
                     required: true
                 }
             },
             job: {
                 isValid: true,
-                value: "none"
+                value: this.props.user.job
             },
             phone: {
                 isValid: true,
-                value: null
+                value: this.props.user.phone,
             },
             profilePhoto: {
                 isValid: true,
@@ -52,6 +52,8 @@ class Profile extends Component {
     }
 
     componentDidMount() {
+        debugger;
+        console.log(Date(this.props.user.birthDate))
         console.log(this.props.user)
     }
 
@@ -92,11 +94,12 @@ class Profile extends Component {
     };
 
     saveBtnClicked = () => {
-        storageRef.child("/profile_photos/" + this.props.user.uid + "/profilePhoto.jpg")
-            .putString(this.state.form.profilePhoto.data, "data_url").then(url => {
-                debugger;
-                //console.log(blob);
-            })
+        // storageRef.child("/profile_photos/" + this.props.user.uid + "/profilePhoto.jpg")
+        //     .putString(this.state.form.profilePhoto.data, "data_url").then(url => {
+        //         debugger;
+        //         //console.log(blob);
+        //     })
+            
         const user = {
             phone: this.state.form.phone.value,
             birthDate: this.state.form.birthDate.value.getTime(),
@@ -109,6 +112,9 @@ class Profile extends Component {
 
     render() {
         const { classes, user, t } = this.props;
+
+        debugger;
+        console.log(this.state.form);
         return (
             <div className={classes.flex}>
                 <div className={classes.leftSide}>
