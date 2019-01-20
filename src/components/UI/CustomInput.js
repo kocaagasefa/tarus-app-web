@@ -1,24 +1,25 @@
 import React from 'react';
 
-import {InputBase, withStyles, Select } from '@material-ui/core';
+import { InputBase, withStyles, Select } from '@material-ui/core';
 
 
 const customInput = props => {
-    const {container, lefticon,classes,containerStyle,invalid,type, ...others} = props;
+    const { container, lefticon, classes, containerStyle, invalid, type, ...others } = props;
     return (
-    <div className={classes.container +" "+ (invalid?classes.invalid:"")} 
-        style={containerStyle}>
-        {lefticon}
-        
-   {type==="select"?
-   <Select {...others}
-   className ={[props.classes.input,props.lefticon&&props.classes.inputWithIcon].join(" ")}/>
-   :
-   <InputBase  
-            {...others}
-            className ={[props.classes.input,props.lefticon&&props.classes.inputWithIcon].join(" ")}/>}
-    </div>
-);}
+        <div className={classes.container + " " + (invalid ? classes.invalid : "")}
+            style={containerStyle}>
+            {lefticon}
+
+            {type === "select" ?
+                <Select {...others}
+                    className={[props.classes.input, props.lefticon && props.classes.inputWithIcon].join(" ")} />
+                :
+                <InputBase
+                    {...others} type={type}
+                    className={[props.classes.input, props.lefticon && props.classes.inputWithIcon].join(" ")} />}
+        </div>
+    );
+}
 
 const style = theme => ({
     container: {
