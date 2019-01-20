@@ -47,6 +47,10 @@ class Profile extends Component {
             profilePhoto: {
                 isValid: true,
                 value: ""
+            },
+            photoURL: {
+                isValid: true,
+                value: this.props.user.photoURL
             }
         }
     }
@@ -109,6 +113,12 @@ class Profile extends Component {
             job: this.state.form.job.value
         };
         databaseRef.child('users/' + this.props.user.uid).set(user)
+
+        this.setState(prevState => {
+            return {
+                form: formDataUpdate(prevState.form, "", "profilePhoto")
+            };
+        });
     }
 
     checkFormValidity = () => Object.keys(this.state.form).map(key => this.state.form[key].isValid).every(element => element)
@@ -134,7 +144,8 @@ class Profile extends Component {
                         onChange={this.formElementChangedHandler} />
                     <label htmlFor="profilePhoto" className={classes.center}>
                         <Tooltip title={t('profilePage.addPhoto')} placement="bottom-end">
-                            <Avatar style={{ width: 200, height: 200, backgroundColor: '#f3f3f3', color: 'black' }} src={this.state.form.profilePhoto.data} alt="profile">
+                            <Avatar style={{ width: 200, height: 200, backgroundColor: '#f3f3f3', color: 'black' }} alt="profilePhoto"
+                                src={this.state.form.profilePhoto.value ? this.state.form.profilePhoto.data : this.props.user.photoURL }>
                                 <PhotoIcon className={classes.profilePhoto} />
                             </Avatar>
                         </Tooltip>

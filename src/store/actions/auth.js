@@ -81,9 +81,11 @@ export const authStateChangedListener = () => dispatch => {
         else {
             databaseRef.child('/users/' + user.uid).once('value')
                 .then((snapshot) => {
-                    user.phone = snapshot.val().phone;
-                    user.birthDate = snapshot.val().birthDate;
-                    user.job = snapshot.val().job;
+                    if(snapshot.val()) {
+                        user.phone = snapshot.val().phone ? snapshot.val().phone : null;
+                        user.birthDate = snapshot.val().birthDate;
+                        user.job = snapshot.val().job;
+                    }
 
                     dispatch({
                         type: FETCH_USER,
