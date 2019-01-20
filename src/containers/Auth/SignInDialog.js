@@ -35,9 +35,9 @@ const signInDialog = (props) => {
 
 const style = theme => ({
     signIn: {
-        border: '2px solid #6F007F',
+        border: '2px solid #e6457e',
         backgroundColor: 'initial',
-        backgroundImage: 'linear-gradient(-180deg, #380040 0%, #6F007F 100%)',
+        backgroundImage: 'linear-gradient(-180deg, #3127c9 0%, #e6457e 100%)',
         textAlign: 'center',
         textColor: '#f3f3f3'
     },
