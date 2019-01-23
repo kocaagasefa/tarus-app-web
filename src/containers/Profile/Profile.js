@@ -13,6 +13,7 @@ import Input from '../../components/UI/CustomInput';
 import Label from '../../components/UI/CustomLabel';
 import { formDataUpdate } from '../../helpers/validate';
 import { databaseRef, storageRef, auth } from '../../config/firebase';
+import { updateProfilePhoto } from '../../store/actions/profile';
 
 class Profile extends Component {
     state = {
@@ -69,7 +70,6 @@ class Profile extends Component {
     };
 
     formElementChangedHandler = event => {
-        debugger;
         let { name, value, files } = event.target;
 
         if (files) {
@@ -96,29 +96,25 @@ class Profile extends Component {
         });
     };
 
-    saveBtnClicked = () => {
-        /* storageRef.child("/profile_photos/" + this.props.user.uid + "/profilePhoto.jpg")
-            .putString(this.state.form.profilePhoto.data, "data_url").then(snapshot => {
-                snapshot.ref.getDownloadURL().then(function (url) {
-                    debugger;
-                    return auth.currentUser.updateProfile({
-                        photoURL: url
-                    })
-                })
-            }) */
-
+    updateProfileState = () => {
         const user = {
             phone: this.state.form.phone.value,
             birthDate: this.state.form.birthDate.value.getTime(),
             job: this.state.form.job.value
         };
-        databaseRef.child('users/' + this.props.user.uid).set(user)
+        databaseRef.child('users/' + this.props.user.uid).set(user);
+    }
 
-        this.setState(prevState => {
-            return {
-                form: formDataUpdate(prevState.form, "", "profilePhoto")
-            };
-        });
+    saveBtnClicked = () => {
+        if (this.state.form.profilePhoto && this.state.form.profilePhoto.touched) {
+            this.props.updateProfilePhoto(this.state.form.profilePhoto, this.props.user.uid)
+                .then(resp => {
+                    this.updateProfileState();
+                })
+        }
+        else {
+            this.updateProfileState();
+        }
     }
 
     checkFormValidity = () => Object.keys(this.state.form).map(key => this.state.form[key].isValid).every(element => element)
@@ -145,7 +141,7 @@ class Profile extends Component {
                     <label htmlFor="profilePhoto" className={classes.center}>
                         <Tooltip title={t('profilePage.addPhoto')} placement="bottom-end">
                             <Avatar style={{ width: 200, height: 200, backgroundColor: '#f3f3f3', color: 'black' }} alt="profilePhoto"
-                                src={this.state.form.profilePhoto.value ? this.state.form.profilePhoto.data : this.props.user.photoURL }>
+                                src={this.state.form.profilePhoto.value ? this.state.form.profilePhoto.data : this.props.user.photoURL}>
                                 <PhotoIcon className={classes.profilePhoto} />
                             </Avatar>
                         </Tooltip>
@@ -244,4 +240,11 @@ const mapStateToProps = state => {
         user: state.auth.user
     }
 }
-export default connect(mapStateToProps, null)(withNamespaces("common")(withStyles(styles)(Profile)));
+
+const mapDispatchToProps = dispatch => {
+    return {
+        updateProfilePhoto: (photo, uid) => dispatch(updateProfilePhoto(photo, uid))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withNamespaces("common")(withStyles(styles)(Profile)));
