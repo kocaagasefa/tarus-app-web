@@ -12,7 +12,7 @@ import Button from '../../components/UI/CustomButton';
 import Input from '../../components/UI/CustomInput';
 import Label from '../../components/UI/CustomLabel';
 import { formDataUpdate } from '../../helpers/validate';
-import { databaseRef, storageRef, auth } from '../../config/firebase';
+import { databaseRef } from '../../config/firebase';
 import { updateProfilePhoto } from '../../store/actions/profile';
 
 class Profile extends Component {
@@ -54,11 +54,6 @@ class Profile extends Component {
                 value: this.props.user.photoURL
             }
         }
-    }
-
-    componentDidMount() {
-        console.log(Date(this.props.user.birthDate))
-        console.log(this.props.user)
     }
 
     thirdPartyInputChangedHandler = (value, name) => {
