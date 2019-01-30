@@ -45,7 +45,6 @@ const navBar = props => {
 
 const styles = theme => ({
     navBar: {
-        flexGrow: 1,
         backgroundImage: 'linear-gradient(-180deg, #380040 0%, #6F007F 100%)',
         zIndex: theme.zIndex.drawer + 1,
     },

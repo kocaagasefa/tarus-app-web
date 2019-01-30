@@ -24,7 +24,7 @@ export const addHouse = house => dispatch => {
     return databaseRef.child("houses").push({...house,owner:auth.currentUser.uid})
         .then(response=> {
             dispatch(addHouseSuccess());
-            return response;
+            return {key:response.key,owner:auth.currentUser.uid};
         })
         .catch(error=>{
             dispatch(addHouseFail());
