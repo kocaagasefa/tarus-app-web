@@ -1,50 +1,53 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Input from '../UI/CustomInput';
-import Button from '../UI/CustomButton';
-import { withStyles, Select,MenuItem } from '@material-ui/core';
-import { addHouse } from '../../store/actions/house';
-class NewHouse extends Component {
 
-    addHouse = () => {
-        const house = {
-            title:"House Title",
-            description:"house description",
-            photos:[]
-        }
-        this.props.addHouse(house);
+
+import { withStyles, MenuItem, Stepper, Step, StepLabel } from '@material-ui/core';
+
+import { addHouse } from '../../store/actions/house';
+import HouseInformationForm from './HouseInformationForm';
+import UploadPhotos from './UploadPhotos';
+
+class NewHouse extends Component {
+    state={
+        activeStep:1
     }
 
+    nextStep = (key) => this.setState(prevState=>{return {activeStep:prevState.activeStep+1,key}})
+    renderStep = () => {
+        switch(this.state.activeStep){
+            case 0:
+            return <HouseInformationForm addHouse={this.props.addHouse} onComplete={this.nextStep}/>
+            case 1:
+            return <UploadPhotos />
+            default:
+            return <div>Error</div>
+        }
+    }
     render(){
-        const { classes} = this.props;
-        return (<form className={classes.form}>  
-            <Input placeholder="Title"/>
-            <Input placeholder="Description"/>
-            <Input className={classes.type}
-                            name="type"
-                            placeholder="type"
-                            type="select"
-                            value="shared"
-                        >
-                            {[{text:"Shared Room",value:"shared"},{text:"Private Room",value:"private"}].map(({ value, text }) => (
-                                <MenuItem key={value} value={value}>{text}</MenuItem>
-                            ))}
-                        </Input>
-            <Button onClick={this.addHouse} >Save </Button>
-        </form>)
+        const { activeStep } = this.state;
+        return (
+            <>
+                <Stepper activeStep={activeStep}>
+                    <Step completed ={activeStep > 0}>
+                        <StepLabel>Enter House Data</StepLabel>
+                    </Step>
+                    <Step completed ={activeStep > 1}>
+                        <StepLabel>Upload Photos</StepLabel>
+                    </Step>
+                    <Step completed ={activeStep > 2}>
+                        <StepLabel>Preview and Confirm </StepLabel>
+                    </Step>
+                </Stepper>
+                {this.renderStep()}
+            </>
+        )
     }
 }
 
-
 const styles = theme => ({
-    form:{
-        backgroundColor:"blue",
-        padding:10
-    },
-    type:{
-        width:"100%"
-    }
-})
+
+});
 const mapDispatchToProps = dispatch => {
     return {
         addHouse: (house) => dispatch(addHouse(house))

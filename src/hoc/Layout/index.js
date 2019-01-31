@@ -53,7 +53,7 @@ class Layout extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <>
+            <div className={classes.container}>
                 <NavBar
                     t={this.props.t}
                     lng={this.props.lng}
@@ -80,7 +80,7 @@ class Layout extends Component {
 
                     {this.props.children}
                 </main>
-            </>
+            </div>
         );
     }
 }
@@ -98,6 +98,11 @@ const mapDispatchToProps = dispatch => {
 }
 
 const styles = theme => ({
+    container:{
+        minHeight:"100vh",
+        display:"flex",
+        flexDirection:"column"
+    },
     content: {
         flexGrow: 1,
         transition: theme.transitions.create('margin', {
@@ -105,6 +110,8 @@ const styles = theme => ({
             duration: theme.transitions.duration.leavingScreen,
         }),
         marginLeft: 0,
+        display:"flex",
+        flexDirection:"column"
     },
     contentShift: {
         transition: theme.transitions.create('margin', {
