@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, withStyles, Hidden } from '@material-ui/core';
-import { Mail, Person, Home } from '@material-ui/icons';
+import { Link } from 'react-router-dom'
+import { Drawer, List, ListItem, ListItemText, Divider, withStyles, Hidden } from '@material-ui/core';
+import { Person, Home } from '@material-ui/icons';
 
 class CustomDrawer extends Component {
   getIcon = (menuName) => {
@@ -31,29 +32,27 @@ class CustomDrawer extends Component {
             <div className={classes.toolbar} />
             <List>
               {
-                [{ value: 'Profile Page', link: 'profile' },
-                { value: 'Houses', link: 'houses' }].map((obj, index) => (
-                  <ListItem button key={obj.value} component="a" href={obj.link}>
-                    <ListItemIcon>
-                      {
-                        obj.link === 'profile' ? <Person /> :
-                          obj.link === 'houses' ? <Home /> : null
-                      }
-                    </ListItemIcon>
-                    <ListItemText primary={obj.value} />
-                  </ListItem>
-                ))
+                [{ value: 'Profile', to: 'profile', icon: Person },
+                { value: 'Houses', to: 'houses', icon: Home }].map((obj) => {
+                  const Icon = obj.icon;
+                  return (
+                    <ListItem component={Link} to={obj.to} button key={obj.to}>
+                      <Icon />
+                      <ListItemText primary={obj.value} />
+                    </ListItem>
+                  )
+                })
               }
             </List>
             <Divider />
-            <List>
+            {/* <List>
               {['All mail', 'Trash', 'Spam'].map((text, index) => (
                 <ListItem button key={text}>
                   <ListItemIcon>{index % 2 === 0 ? <Person /> : <Mail />}</ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItem>
               ))}
-            </List>
+            </List> */}
           </Drawer>
         </Hidden>
       </nav>
