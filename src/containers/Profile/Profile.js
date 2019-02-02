@@ -136,12 +136,14 @@ class Profile extends Component {
                         onChange={this.formElementChangedHandler} />
                     <label htmlFor="profilePhoto" className={classes.center}>
                         <Tooltip title={t('profilePage.addPhoto')} placement="bottom-end">
-                            <Avatar style={{ width: 200, height: 200, backgroundColor: '#f3f3f3', color: 'black' }} alt="profilePhoto"
+                            <Avatar style={{ width: '10em', height: '10em', backgroundColor: '#f3f3f3', color: 'black'}} alt="profilePhoto"
                                 src={this.state.form.profilePhoto.value ? this.state.form.profilePhoto.data : this.props.user.photoURL}>
                                 <PhotoIcon className={classes.profilePhoto} />
                             </Avatar>
                         </Tooltip>
                     </label>
+                    <br />
+                    <br />
                     <Label>{t('profilePage.displayName')}</Label>
                     <Input disabled value={this.props.user.displayName ? this.props.user.displayName : ""} />
                     <Label>E-Mail</Label>
@@ -211,7 +213,9 @@ const styles = theme => ({
     center: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: '1em',
+        paddingTop: theme.spacing.unit * 3
     },
     pageTitle: {
         color: '#9927B1'

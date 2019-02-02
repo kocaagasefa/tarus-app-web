@@ -5,7 +5,7 @@ import PhoneInput from 'react-phone-input-2';
 
 const customPhone = props => {
     const { container, classes, containerStyle, invalid, ...others } = props;
-    debugger;
+    
     return (
         <div className={classes.container + " " + (invalid ? classes.invalid : "")}
             style={containerStyle}>
@@ -13,6 +13,10 @@ const customPhone = props => {
                 inputStyle={{
                     backgroundColor: "rgba(255,255,255,.0)",
                     width: '100%',
+                    border: 'none'
+                }}
+                buttonStyle= {{
+                    backgroundColor: "rgba(255,255,255,.0)",
                     border: 'none'
                 }}
                 enableSearchField='true'></PhoneInput>

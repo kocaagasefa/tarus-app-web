@@ -71,7 +71,7 @@ export const googleSignIn = () => {
 }
 
 export const authStateChangedListener = () => dispatch => {
-    return auth.onAuthStateChanged(user => {
+    /* return auth.onAuthStateChanged(user => {
         if (!user) {
             dispatch({
                 type: FETCH_USER,
@@ -81,7 +81,7 @@ export const authStateChangedListener = () => dispatch => {
         else {
             databaseRef.child('/users/' + user.uid).once('value')
                 .then((snapshot) => {
-                    if(snapshot.val()) {
+                    if (snapshot.val()) {
                         user.phone = snapshot.val().phone ? snapshot.val().phone : null;
                         user.birthDate = snapshot.val().birthDate;
                         user.job = snapshot.val().job;
@@ -93,7 +93,17 @@ export const authStateChangedListener = () => dispatch => {
                     });
                 })
         }
-    });
+    }); */
+
+    // internete bağlı olunmadığı durumlar için
+    return dispatch({
+        type: FETCH_USER,
+        user: {
+            displayName: 'deneme',
+            userName: 'deneme',
+            email: 'deneme@deneme.com'
+        }
+    })
 };
 
 
