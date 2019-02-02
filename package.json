@@ -20,6 +20,7 @@
     "react-dom": "^16.5.2",
     "react-i18next": "^8.3.9",
     "react-ionicons": "^2.1.6",
+    "react-phone-input-2": "^2.7.1",
     "react-phone-number-input": "^2.2.20",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",

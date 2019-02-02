@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Avatar, withStyles, Tooltip, Select, MenuItem } from '@material-ui/core';
+import { Avatar, withStyles, Tooltip, MenuItem } from '@material-ui/core';
 import {
     AddAPhoto as PhotoIcon
 } from '@material-ui/icons';
 import { withNamespaces } from 'react-i18next';
-import { DatePicker } from 'material-ui-pickers';
-import PhoneInput from 'react-phone-number-input/';
 import 'react-phone-number-input/style.css';
 import Button from '../../components/UI/CustomButton';
 import Input from '../../components/UI/CustomInput';
+import Select from '../../components/UI/CustomSelect';
+import PhoneInput from '../../components/UI/CustomPhone';
+import CustomDate from '../../components/UI/CustomDate';
 import Label from '../../components/UI/CustomLabel';
 import { formDataUpdate } from '../../helpers/validate';
 import { databaseRef } from '../../config/firebase';
@@ -146,14 +147,14 @@ class Profile extends Component {
                     <Label>E-Mail</Label>
                     <Input value={this.state.form.email.value} name="email" onChange={this.formElementChangedHandler} />
                     <Label>{t('profilePage.birthDate')}</Label>
-                    <DatePicker className={classes.thirdPartyInput}
+                    <CustomDate className={classes.thirdPartyInput}
                         keyboard
                         clearable
                         format="dd/MM/yyyy"
                         mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
                         value={this.state.form.birthDate.value}
                         onChange={val => this.thirdPartyInputChangedHandler(val, "birthDate")}
-                        animateYearScrolling={false}></DatePicker>
+                        animateYearScrolling={false}></CustomDate>
                     <Label>{t('profilePage.job')}</Label>
                     <Select className={classes.thirdPartyInput}
                         value={this.state.form.job.value}
@@ -171,10 +172,13 @@ class Profile extends Component {
                         ))}
                     </Select>
                     <Label>{t('profilePage.phoneNumber')}</Label>
-                    <PhoneInput className={classes.thirdPartyInput}
+                    <PhoneInput defaultCountry='tr'
+                        regions={'europe'}
+                    />
+                    {/* <PhoneInput className={classes.thirdPartyInput}
                         placeholder={t('profilePage.phoneNumber')}
                         value={this.state.form.phone.value}
-                        onChange={val => this.thirdPartyInputChangedHandler(val, "phone")} />
+                        onChange={val => this.thirdPartyInputChangedHandler(val, "phone")} /> */}
                     <Button className={classes.btn}
                         disabled={!this.checkFormValidity()}
                         onClick={this.saveBtnClicked}>{t('general.save')}</Button>
