@@ -1,13 +1,18 @@
 import React from 'react';
 import { Select, withStyles } from '@material-ui/core';
+import Label from './CustomLabel';
+import { withNamespaces } from 'react-i18next';
 
 const customSelect = props => {
-    const { container, classes, containerStyle, invalid, ...others } = props;
+    const { container, classes, containerStyle, invalid, t, label, ...others } = props;
     return (
-        <div className={classes.container + " " + (invalid ? classes.invalid : "")}
-            style={containerStyle}>
-            <Select {...others}
-                className={classes.select}></Select>
+        <div className={classes.customSelect}>
+            <Label>{t('profilePage.' + label)}</Label>
+            <div className={classes.container + " " + (invalid ? classes.invalid : "")}
+                style={containerStyle}>
+                <Select {...others}
+                    className={classes.select}></Select>
+            </div>
         </div>
     );
 }
@@ -22,6 +27,9 @@ const style = theme => ({
         alignItems: "center",
         margin: theme.spacing.unit
     },
+    customSelect: {
+        marginTop: theme.spacing.unit * 2
+    },
     select: {
         color: "white",
         width: "100%",
@@ -34,4 +42,4 @@ const style = theme => ({
 
 });
 
-export default withStyles(style)(customSelect)
+export default withNamespaces("")(withStyles(style)(customSelect));

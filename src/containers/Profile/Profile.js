@@ -144,12 +144,10 @@ class Profile extends Component {
                     </label>
                     <br />
                     <br />
-                    <Label>{t('profilePage.displayName')}</Label>
-                    <Input disabled value={this.props.user.displayName ? this.props.user.displayName : ""} />
-                    <Label>E-Mail</Label>
-                    <Input value={this.state.form.email.value} name="email" onChange={this.formElementChangedHandler} />
-                    <Label>{t('profilePage.birthDate')}</Label>
+                    <Input disabled value={this.props.user.displayName ? this.props.user.displayName : ""} label="displayName" />
+                    <Input value={this.state.form.email.value} name="email" onChange={this.formElementChangedHandler} label="email" />
                     <CustomDate className={classes.thirdPartyInput}
+                        label="birthDate"
                         keyboard
                         clearable
                         format="dd/MM/yyyy"
@@ -157,7 +155,6 @@ class Profile extends Component {
                         value={this.state.form.birthDate.value}
                         onChange={val => this.thirdPartyInputChangedHandler(val, "birthDate")}
                         animateYearScrolling={false}></CustomDate>
-                    <Label>{t('profilePage.job')}</Label>
                     <Select className={classes.thirdPartyInput}
                         value={this.state.form.job.value}
                         onChange={this.formElementChangedHandler}
@@ -165,6 +162,7 @@ class Profile extends Component {
                         inputProps={{
                             id: 'job-required',
                         }}
+                        label="job"
                     >
                         <MenuItem value="none" disabled>
                             {t('general.selectJob')}
@@ -173,9 +171,9 @@ class Profile extends Component {
                             <MenuItem key={value} value={value}>{text}</MenuItem>
                         ))}
                     </Select>
-                    <Label>{t('profilePage.phoneNumber')}</Label>
                     <PhoneInput defaultCountry='tr'
                         regions={'europe'}
+                        label="phoneNumber"
                     />
                     {/* <PhoneInput className={classes.thirdPartyInput}
                         placeholder={t('profilePage.phoneNumber')}
@@ -201,7 +199,6 @@ const styles = theme => ({
     },
     rightSide: {
         width: '50%',
-        height: '100vh',
         backgroundImage: 'linear-gradient(-180deg, #3127c9 0%, #e6457e 100%)',
         display: 'flex',
         flexDirection: 'column',
@@ -213,9 +210,7 @@ const styles = theme => ({
     center: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: '1em',
-        paddingTop: theme.spacing.unit * 3
+        alignItems: 'center'
     },
     pageTitle: {
         color: '#9927B1'

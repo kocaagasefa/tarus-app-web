@@ -12,8 +12,7 @@ const customLabel = (props) => {
 
 const style = theme => ({
     lbl: {
-        marginLeft: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 3
+        marginLeft: theme.spacing.unit
     }
 })
 
