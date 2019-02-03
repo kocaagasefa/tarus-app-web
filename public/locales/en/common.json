@@ -23,7 +23,8 @@
         "birthDate": "Birth Date",
         "displayName": "User Name",
         "phoneNumber": "Phone Number",
-        "job": "Job"
+        "job": "Job",
+        "email": "E-Mail"
     },
     "jobs": [
         { "value": "secretary", "text": "Secretary" },
