@@ -9,7 +9,7 @@ const customInput = props => {
 
     return (
         <div className={classes.customInput}>
-            <Label>{t('profilePage.' + label)}</Label>
+            { label && <Label>{t(label)}</Label> }
             <div className={classes.container + " " + (invalid ? classes.invalid : "")}
                 style={containerStyle}>
                 {lefticon}

@@ -71,7 +71,7 @@ export const googleSignIn = () => {
 }
 
 export const authStateChangedListener = () => dispatch => {
-    /* return auth.onAuthStateChanged(user => {
+    return auth.onAuthStateChanged(user => {
         if (!user) {
             dispatch({
                 type: FETCH_USER,
@@ -93,17 +93,17 @@ export const authStateChangedListener = () => dispatch => {
                     });
                 })
         }
-    }); */
+    });
 
     // internete bağlı olunmadığı durumlar için
-    return dispatch({
+    /* return dispatch({
         type: FETCH_USER,
         user: {
             displayName: 'deneme',
             userName: 'deneme',
             email: 'deneme@deneme.com'
         }
-    })
+    }) */
 };
 
 

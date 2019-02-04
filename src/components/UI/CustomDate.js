@@ -9,7 +9,7 @@ const customDate = props => {
     const { container, classes, containerStyle, invalid, t, label, ...others } = props;
     return (
         <div className={classes.customDate}>
-            <Label>{t('profilePage.' + label)}</Label>
+            { label && <Label>{t(label)}</Label> }
             <div className={classes.container + " " + (invalid ? classes.invalid : "")}
                 style={containerStyle}>
                 <DatePicker {...others}

@@ -7,7 +7,7 @@ const customSelect = props => {
     const { container, classes, containerStyle, invalid, t, label, ...others } = props;
     return (
         <div className={classes.customSelect}>
-            <Label>{t('profilePage.' + label)}</Label>
+            { label && <Label>{t(label)}</Label> }
             <div className={classes.container + " " + (invalid ? classes.invalid : "")}
                 style={containerStyle}>
                 <Select {...others}

@@ -10,7 +10,7 @@ const customPhone = props => {
 
     return (
         <div className={classes.customPhone}>
-            <Label>{t('profilePage.' + label)}</Label>
+            { label && <Label>{t(label)}</Label> }
             <div className={classes.container + " " + (invalid ? classes.invalid : "")}
                 style={containerStyle}>
                 <PhoneInput {...others}

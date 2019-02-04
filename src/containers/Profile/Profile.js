@@ -11,7 +11,6 @@ import Input from '../../components/UI/CustomInput';
 import Select from '../../components/UI/CustomSelect';
 import PhoneInput from '../../components/UI/CustomPhone';
 import CustomDate from '../../components/UI/CustomDate';
-import Label from '../../components/UI/CustomLabel';
 import { formDataUpdate } from '../../helpers/validate';
 import { databaseRef } from '../../config/firebase';
 import { updateProfilePhoto } from '../../store/actions/profile';
@@ -136,7 +135,7 @@ class Profile extends Component {
                         onChange={this.formElementChangedHandler} />
                     <label htmlFor="profilePhoto" className={classes.center}>
                         <Tooltip title={t('profilePage.addPhoto')} placement="bottom-end">
-                            <Avatar style={{ width: '10em', height: '10em', backgroundColor: '#f3f3f3', color: 'black'}} alt="profilePhoto"
+                            <Avatar style={{ width: '10em', height: '10em', backgroundColor: '#f3f3f3', color: 'black' }} alt="profilePhoto"
                                 src={this.state.form.profilePhoto.value ? this.state.form.profilePhoto.data : this.props.user.photoURL}>
                                 <PhotoIcon className={classes.profilePhoto} />
                             </Avatar>
@@ -144,10 +143,15 @@ class Profile extends Component {
                     </label>
                     <br />
                     <br />
-                    <Input disabled value={this.props.user.displayName ? this.props.user.displayName : ""} label="displayName" />
-                    <Input value={this.state.form.email.value} name="email" onChange={this.formElementChangedHandler} label="email" />
+                    <Input disabled
+                        value={this.props.user.displayName ? this.props.user.displayName : ""}
+                        label="profilePage.displayName" />
+                    <Input value={this.state.form.email.value}
+                        name="email"
+                        onChange={this.formElementChangedHandler}
+                        label="profilePage.email" />
                     <CustomDate className={classes.thirdPartyInput}
-                        label="birthDate"
+                        label="profilePage.birthDate"
                         keyboard
                         clearable
                         format="dd/MM/yyyy"
@@ -162,7 +166,7 @@ class Profile extends Component {
                         inputProps={{
                             id: 'job-required',
                         }}
-                        label="job"
+                        label="profilePage.job"
                     >
                         <MenuItem value="none" disabled>
                             {t('general.selectJob')}
@@ -173,7 +177,7 @@ class Profile extends Component {
                     </Select>
                     <PhoneInput defaultCountry='tr'
                         regions={'europe'}
-                        label="phoneNumber"
+                        label="profilePage.phoneNumber"
                     />
                     {/* <PhoneInput className={classes.thirdPartyInput}
                         placeholder={t('profilePage.phoneNumber')}
@@ -199,7 +203,7 @@ const styles = theme => ({
     },
     rightSide: {
         width: '50%',
-        backgroundImage: 'linear-gradient(-180deg, #3127c9 0%, #e6457e 100%)',
+        backgroundImage: 'linear-gradient(-180deg, rgba(49, 39, 201, 0.7), rgba(230, 69, 126, 0.7))',
         display: 'flex',
         flexDirection: 'column',
         paddingTop: theme.spacing.unit * 3

@@ -14,7 +14,7 @@
     "i18next-browser-languagedetector": "^2.2.4",
     "i18next-xhr-backend": "^1.5.1",
     "luxon": "^1.8.2",
-    "material-ui-pickers": "^1.0.1",
+    "material-ui-pickers": "1.0.1",
     "moment": "^2.23.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
