@@ -85,6 +85,8 @@ export const authStateChangedListener = () => dispatch => {
                         user.phone = snapshot.val().phone ? snapshot.val().phone : null;
                         user.birthDate = snapshot.val().birthDate;
                         user.job = snapshot.val().job;
+                        user.country = snapshot.val().country;
+                        user.city = snapshot.val().city;
                     }
 
                     dispatch({

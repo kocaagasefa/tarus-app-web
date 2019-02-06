@@ -25,7 +25,8 @@
         "phoneNumber": "Telefon Numarası",
         "job": "Meslek",
         "email": "E-Mail",
-        "countryCity": "Ülke/Şehir"
+        "country": "Ülke",
+        "city": "Şehir"
     },
     "jobs": [
         { "value": "secretary", "text": "Sekreter" },
