@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withStyles, Chip, AppBar, Toolbar, IconButton, Typography, Button, Hidden, withWidth } from '@material-ui/core';
 import { Menu, ClassSharp } from '@material-ui/icons';
 import compose from 'recompose/compose';
@@ -9,9 +10,12 @@ const navBar = props => {
         <div className={classes.navBar}>
             <AppBar position="relative" className={classes.navBar}>
                 <Toolbar>
-                    <IconButton className={ClassSharp.menuButton} color="inherit" onClick={toggleDrawer}>
-                        <Menu />
-                    </IconButton>
+                    {
+                        props.user &&
+                        <IconButton className={ClassSharp.menuButton} color="inherit" onClick={toggleDrawer}>
+                            <Menu />
+                        </IconButton>
+                    }
                     <Typography className={classes.brand} variant="h6" color="inherit">
                         HOMEBINE
                 </Typography>
@@ -61,4 +65,10 @@ const styles = theme => ({
     },
 })
 
-export default compose(withStyles(styles),withWidth())(navBar);
+const mapStateToProps = state => {
+    return {
+        user: state.auth.user
+    }
+}
+
+export default connect(mapStateToProps)(compose(withStyles(styles), withWidth())(navBar));

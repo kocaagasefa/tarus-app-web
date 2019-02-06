@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Avatar, withStyles, Tooltip, Select, MenuItem } from '@material-ui/core';
+import { Avatar, withStyles, Tooltip, MenuItem } from '@material-ui/core';
 import {
     AddAPhoto as PhotoIcon
 } from '@material-ui/icons';
 import { withNamespaces } from 'react-i18next';
-import { DatePicker } from 'material-ui-pickers';
-import PhoneInput from 'react-phone-number-input/';
 import 'react-phone-number-input/style.css';
 import Button from '../../components/UI/CustomButton';
 import Input from '../../components/UI/CustomInput';
-import Label from '../../components/UI/CustomLabel';
+import Select from '../../components/UI/CustomSelect';
+import PhoneInput from '../../components/UI/CustomPhone';
+import CustomDate from '../../components/UI/CustomDate';
 import { formDataUpdate } from '../../helpers/validate';
-import { databaseRef, storageRef, auth } from '../../config/firebase';
+import { databaseRef } from '../../config/firebase';
 import { updateProfilePhoto } from '../../store/actions/profile';
 
 class Profile extends Component {
@@ -54,11 +54,6 @@ class Profile extends Component {
                 value: this.props.user.photoURL
             }
         }
-    }
-
-    componentDidMount() {
-        console.log(Date(this.props.user.birthDate))
-        console.log(this.props.user)
     }
 
     thirdPartyInputChangedHandler = (value, name) => {
@@ -140,26 +135,30 @@ class Profile extends Component {
                         onChange={this.formElementChangedHandler} />
                     <label htmlFor="profilePhoto" className={classes.center}>
                         <Tooltip title={t('profilePage.addPhoto')} placement="bottom-end">
-                            <Avatar style={{ width: 200, height: 200, backgroundColor: '#f3f3f3', color: 'black' }} alt="profilePhoto"
+                            <Avatar style={{ width: '10em', height: '10em', backgroundColor: '#f3f3f3', color: 'black' }} alt="profilePhoto"
                                 src={this.state.form.profilePhoto.value ? this.state.form.profilePhoto.data : this.props.user.photoURL}>
                                 <PhotoIcon className={classes.profilePhoto} />
                             </Avatar>
                         </Tooltip>
                     </label>
-                    <Label>{t('profilePage.displayName')}</Label>
-                    <Input disabled value={this.props.user.displayName ? this.props.user.displayName : ""} />
-                    <Label>E-Mail</Label>
-                    <Input value={this.state.form.email.value} name="email" onChange={this.formElementChangedHandler} />
-                    <Label>{t('profilePage.birthDate')}</Label>
-                    <DatePicker className={classes.thirdPartyInput}
+                    <br />
+                    <br />
+                    <Input disabled
+                        value={this.props.user.displayName ? this.props.user.displayName : ""}
+                        label="profilePage.displayName" />
+                    <Input value={this.state.form.email.value}
+                        name="email"
+                        onChange={this.formElementChangedHandler}
+                        label="profilePage.email" />
+                    <CustomDate className={classes.thirdPartyInput}
+                        label="profilePage.birthDate"
                         keyboard
                         clearable
                         format="dd/MM/yyyy"
                         mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
                         value={this.state.form.birthDate.value}
                         onChange={val => this.thirdPartyInputChangedHandler(val, "birthDate")}
-                        animateYearScrolling={false}></DatePicker>
-                    <Label>{t('profilePage.job')}</Label>
+                        animateYearScrolling={false}></CustomDate>
                     <Select className={classes.thirdPartyInput}
                         value={this.state.form.job.value}
                         onChange={this.formElementChangedHandler}
@@ -167,6 +166,7 @@ class Profile extends Component {
                         inputProps={{
                             id: 'job-required',
                         }}
+                        label="profilePage.job"
                     >
                         <MenuItem value="none" disabled>
                             {t('general.selectJob')}
@@ -175,11 +175,14 @@ class Profile extends Component {
                             <MenuItem key={value} value={value}>{text}</MenuItem>
                         ))}
                     </Select>
-                    <Label>{t('profilePage.phoneNumber')}</Label>
-                    <PhoneInput className={classes.thirdPartyInput}
+                    <PhoneInput defaultCountry='tr'
+                        regions={'europe'}
+                        label="profilePage.phoneNumber"
+                    />
+                    {/* <PhoneInput className={classes.thirdPartyInput}
                         placeholder={t('profilePage.phoneNumber')}
                         value={this.state.form.phone.value}
-                        onChange={val => this.thirdPartyInputChangedHandler(val, "phone")} />
+                        onChange={val => this.thirdPartyInputChangedHandler(val, "phone")} /> */}
                     <Button className={classes.btn}
                         disabled={!this.checkFormValidity()}
                         onClick={this.saveBtnClicked}>{t('general.save')}</Button>
@@ -200,8 +203,7 @@ const styles = theme => ({
     },
     rightSide: {
         width: '50%',
-        height: '100vh',
-        backgroundImage: 'linear-gradient(-180deg, #3127c9 0%, #e6457e 100%)',
+        backgroundImage: 'linear-gradient(-180deg, rgba(49, 39, 201, 0.7), rgba(230, 69, 126, 0.7))',
         display: 'flex',
         flexDirection: 'column',
         paddingTop: theme.spacing.unit * 3

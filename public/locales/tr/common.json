@@ -23,7 +23,8 @@
         "birthDate": "Doğum Tarihi",
         "displayName": "Kullanıcı Adı",
         "phoneNumber": "Telefon Numarası",
-        "job": "Meslek"
+        "job": "Meslek",
+        "email": "E-Mail"
     },
     "jobs": [
         { "value": "secretary", "text": "Sekreter" },
