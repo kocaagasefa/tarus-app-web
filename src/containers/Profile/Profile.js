@@ -127,6 +127,7 @@ class Profile extends Component {
                     </p>
                     <img alt="profile" src={require('../../assets/profile.png')} />
                 </div>
+                <div className={classes.leftBlank}></div>
                 <div className={classes.rightSide}>
                     <input id="profilePhoto"
                         type="file"
@@ -201,7 +202,15 @@ const styles = theme => ({
     leftSide: {
         width: '50%',
         height: '100vh',
-        marginLeft: theme.spacing.unit * 2
+        marginLeft: theme.spacing.unit * 2,
+        position:"fixed",
+        top:0,
+        left:0
+    },
+    leftBlank:{
+
+        width: '50%',
+        height: '100vh',
     },
     rightSide: {
         width: '50%',
