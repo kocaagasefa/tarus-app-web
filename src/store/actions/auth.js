@@ -96,7 +96,7 @@ export const authStateChangedListener = () => dispatch => {
     });
 
     // internete bağlı olunmadığı durumlar için
-/*     return dispatch({
+    /* return dispatch({
         type: FETCH_USER,
         user: {
             displayName: 'deneme',
