@@ -146,6 +146,7 @@ class SignUpDialog extends Component {
                                     root: classes.root,
                                     checked: classes.checked,
                                 }}
+                                iconStyle={{fill: 'white'}}
                             />
                         }
                         label="Accept the user agreement"
@@ -188,9 +189,9 @@ const style = theme => ({
         backgroundColor: '#f3f3f3',
     },
     root: {
-        color: green[600],
+        color: 'rgba(49, 39, 201, 0.7)',
         '&$checked': {
-            color: green[500],
+            color: 'rgba(49, 39, 201, 0.7)',
         },
     },
     checked: {},
