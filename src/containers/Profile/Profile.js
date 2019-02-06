@@ -209,6 +209,8 @@ class Profile extends Component {
                         ))}
                     </Select>
                     <PhoneInput defaultCountry='tr'
+                        value={this.state.form.phone.value}
+                        onChange={val => this.thirdPartyInputChangedHandler(val, "phone")}
                         regions={'europe'}
                         label="profilePage.phoneNumber"
                     />
