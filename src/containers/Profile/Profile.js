@@ -6,6 +6,7 @@ import {
 } from '@material-ui/icons';
 import { withNamespaces } from 'react-i18next';
 import 'react-phone-number-input/style.css';
+import CountryCity from '../../components/UI/CustomCountryCity';
 import Button from '../../components/UI/CustomButton';
 import Input from '../../components/UI/CustomInput';
 import Select from '../../components/UI/CustomSelect';
@@ -150,6 +151,7 @@ class Profile extends Component {
                         name="email"
                         onChange={this.formElementChangedHandler}
                         label="profilePage.email" />
+                    <CountryCity label="profilePage.email"/>
                     <CustomDate className={classes.thirdPartyInput}
                         label="profilePage.birthDate"
                         keyboard

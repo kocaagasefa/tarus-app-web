@@ -17,6 +17,7 @@
     "material-ui-pickers": "1.0.1",
     "moment": "^2.23.0",
     "react": "^16.5.2",
+    "react-country-region-selector": "^1.4.3",
     "react-dom": "^16.5.2",
     "react-i18next": "^8.3.9",
     "react-ionicons": "^2.1.6",
