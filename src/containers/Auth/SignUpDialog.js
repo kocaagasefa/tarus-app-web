@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Dialog, Card, withStyles, FormControlLabel, Checkbox } from '@material-ui/core';
-import green from '@material-ui/core/colors/green';
 import {
     PersonAddOutlined as PersonAddIcon,
     AlternateEmailOutlined as EmailIcon,

@@ -24,7 +24,8 @@
         "displayName": "Kullanıcı Adı",
         "phoneNumber": "Telefon Numarası",
         "job": "Meslek",
-        "email": "E-Mail"
+        "email": "E-Mail",
+        "countryCity": "Ülke/Şehir"
     },
     "jobs": [
         { "value": "secretary", "text": "Sekreter" },

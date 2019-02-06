@@ -24,7 +24,8 @@
         "displayName": "User Name",
         "phoneNumber": "Phone Number",
         "job": "Job",
-        "email": "E-Mail"
+        "email": "E-Mail",
+        "countryCity": "Country/City"
     },
     "jobs": [
         { "value": "secretary", "text": "Secretary" },

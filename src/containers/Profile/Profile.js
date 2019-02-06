@@ -151,7 +151,7 @@ class Profile extends Component {
                         name="email"
                         onChange={this.formElementChangedHandler}
                         label="profilePage.email" />
-                    <CountryCity label="profilePage.email"/>
+                    <CountryCity label="profilePage.countryCity"/>
                     <CustomDate className={classes.thirdPartyInput}
                         label="profilePage.birthDate"
                         keyboard
