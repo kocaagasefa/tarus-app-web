@@ -10,7 +10,7 @@ import UploadPhotos from './UploadPhotos';
 
 class NewHouse extends Component {
     state={
-        activeStep:1
+        activeStep:0
     }
 
     nextStep = (key) => this.setState(prevState=>{return {activeStep:prevState.activeStep+1,key}})
@@ -19,7 +19,7 @@ class NewHouse extends Component {
             case 0:
             return <HouseInformationForm addHouse={this.props.addHouse} onComplete={this.nextStep}/>
             case 1:
-            return <UploadPhotos />
+            return <UploadPhotos houseId={this.state.key}/>
             default:
             return <div>Error</div>
         }

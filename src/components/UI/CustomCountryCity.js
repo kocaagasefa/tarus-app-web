@@ -1,12 +1,12 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 import Label from './CustomLabel';
 import { withNamespaces } from 'react-i18next';
 
 const customCountryCity = (props) => {
     const { classes, label, t } = props;
-
+    console.log(CountryRegionData)
     return (
         <div className={classes.customCountryCity}>
             {label && <Label>{t(label)}</Label>}
