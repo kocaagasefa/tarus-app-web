@@ -25,7 +25,8 @@
         "phoneNumber": "Phone Number",
         "job": "Job",
         "email": "E-Mail",
-        "countryCity": "Country/City"
+        "country": "Country",
+        "city": "City"
     },
     "jobs": [
         { "value": "secretary", "text": "Secretary" },

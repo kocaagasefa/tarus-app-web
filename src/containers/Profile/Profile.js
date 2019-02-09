@@ -4,9 +4,9 @@ import { Avatar, withStyles, Tooltip, MenuItem } from '@material-ui/core';
 import {
     AddAPhoto as PhotoIcon
 } from '@material-ui/icons';
+import Regions from '../../helpers/regions';
 import { withNamespaces } from 'react-i18next';
 import 'react-phone-number-input/style.css';
-import CountryCity from '../../components/UI/CustomCountryCity';
 import Button from '../../components/UI/CustomButton';
 import Input from '../../components/UI/CustomInput';
 import Select from '../../components/UI/CustomSelect';
@@ -41,6 +41,14 @@ class Profile extends Component {
             job: {
                 isValid: true,
                 value: this.props.user.job
+            },
+            country: {
+                isValid: true,
+                value: this.props.user.country
+            },
+            city: {
+                isValid: true,
+                value: this.props.user.city
             },
             phone: {
                 isValid: true,
@@ -96,7 +104,9 @@ class Profile extends Component {
         const user = {
             phone: this.state.form.phone.value,
             birthDate: this.state.form.birthDate.value.getTime(),
-            job: this.state.form.job.value
+            job: this.state.form.job.value,
+            country: this.state.form.country.value,
+            city: this.state.form.city.value
         };
         databaseRef.child('users/' + this.props.user.uid).set(user);
     }
@@ -152,7 +162,30 @@ class Profile extends Component {
                         name="email"
                         onChange={this.formElementChangedHandler}
                         label="profilePage.email" />
-                    <CountryCity label="profilePage.countryCity"/>
+                    <Select label="profilePage.country"
+                        value={this.state.form.country.value}
+                        onChange={this.formElementChangedHandler}
+                        name="country">
+                        {Regions.map((country) => (
+                            <MenuItem key={country[0]} value={country[0]}>{country[0]}</MenuItem>
+                        ))}
+                    </Select>
+                    {
+                        this.state.form.country.value &&
+                        <Select label="profilePage.city"
+                            value={this.state.form.city.value}
+                            onChange={this.formElementChangedHandler}
+                            name="city">
+                            {
+                                Regions.filter(region => {
+                                    return region[0] === this.state.form.country.value
+                                })[0][2].split("|").map(elem => {
+                                    var city = elem.split("~");
+                                    return <MenuItem key={city[1]} value={city[0]}>{city[0]}</MenuItem>
+                                })
+                            }
+                        </Select>
+                    }
                     <CustomDate className={classes.thirdPartyInput}
                         label="profilePage.birthDate"
                         keyboard
@@ -166,9 +199,6 @@ class Profile extends Component {
                         value={this.state.form.job.value}
                         onChange={this.formElementChangedHandler}
                         name="job"
-                        inputProps={{
-                            id: 'job-required',
-                        }}
                         label="profilePage.job"
                     >
                         <MenuItem value="none" disabled>
@@ -179,6 +209,8 @@ class Profile extends Component {
                         ))}
                     </Select>
                     <PhoneInput defaultCountry='tr'
+                        value={this.state.form.phone.value}
+                        onChange={val => this.thirdPartyInputChangedHandler(val, "phone")}
                         regions={'europe'}
                         label="profilePage.phoneNumber"
                     />
