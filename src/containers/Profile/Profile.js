@@ -162,6 +162,12 @@ class Profile extends Component {
                         name="email"
                         onChange={this.formElementChangedHandler}
                         label="profilePage.email" />
+                    <PhoneInput defaultCountry='tr'
+                        value={this.state.form.phone.value}
+                        onChange={val => this.thirdPartyInputChangedHandler(val, "phone")}
+                        regions={'europe'}
+                        label="profilePage.phoneNumber"
+                    />
                     <Select label="profilePage.country"
                         value={this.state.form.country.value}
                         onChange={this.formElementChangedHandler}
@@ -208,12 +214,6 @@ class Profile extends Component {
                             <MenuItem key={value} value={value}>{text}</MenuItem>
                         ))}
                     </Select>
-                    <PhoneInput defaultCountry='tr'
-                        value={this.state.form.phone.value}
-                        onChange={val => this.thirdPartyInputChangedHandler(val, "phone")}
-                        regions={'europe'}
-                        label="profilePage.phoneNumber"
-                    />
                     {/* <PhoneInput className={classes.thirdPartyInput}
                         placeholder={t('profilePage.phoneNumber')}
                         value={this.state.form.phone.value}
@@ -235,11 +235,11 @@ const styles = theme => ({
         width: '50%',
         height: '100vh',
         marginLeft: theme.spacing.unit * 2,
-        position:"fixed",
-        top:0,
-        left:0
+        position: "fixed",
+        top: 0,
+        left: 0
     },
-    leftBlank:{
+    leftBlank: {
 
         width: '50%',
         height: '100vh',

@@ -4,17 +4,6 @@ import { Drawer, List, ListItem, ListItemText, Divider, withStyles, Hidden } fro
 import { Person, Home } from '@material-ui/icons';
 
 class CustomDrawer extends Component {
-  getIcon = (menuName) => {
-    debugger;
-
-    switch (menuName) {
-      case 'profile':
-        return <Person />;
-      default:
-        return <Person />;
-    }
-  }
-
   render() {
     const { classes, open } = this.props;
 
@@ -32,8 +21,8 @@ class CustomDrawer extends Component {
             <div className={classes.toolbar} />
             <List>
               {
-                [{ value: 'Profile', to: 'profile', icon: Person },
-                { value: 'Houses', to: 'houses', icon: Home }].map((obj) => {
+                [{ value: 'Profile', to: '/profile', icon: Person },
+                { value: 'Houses', to: '/houses', icon: Home }].map((obj) => {
                   const Icon = obj.icon;
                   return (
                     <ListItem component={Link} to={obj.to} button key={obj.to}>
@@ -45,14 +34,6 @@ class CustomDrawer extends Component {
               }
             </List>
             <Divider />
-            {/* <List>
-              {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                <ListItem button key={text}>
-                  <ListItemIcon>{index % 2 === 0 ? <Person /> : <Mail />}</ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              ))}
-            </List> */}
           </Drawer>
         </Hidden>
       </nav>
