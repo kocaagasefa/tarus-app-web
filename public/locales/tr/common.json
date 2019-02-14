@@ -29,14 +29,14 @@
         "city": "Şehir"
     },
     "jobs": [
-        { "value": "secretary", "text": "Sekreter" },
-        { "value": "editor", "text": "Editör" },
-        { "value": "graphicDesigner", "text": "Grafik Tasarımcı" },
-        { "value": "socialMediaDesigner", "text": "Sosyal Medya Yöneticisi" },
-        { "value": "architect", "text": "Mimar" },
-        { "value": "computerEngineer", "text": "Bilgisayar Mühendisi" },
-        { "value": "mechanicEngineer", "text": "Makine Mühendisi" },
-        { "value": "electricalEngineer", "text": "Elektrik-Elektronik Mühendisi" }
+        { "value": "secretary", "label": "Sekreter" },
+        { "value": "editor", "label": "Editör" },
+        { "value": "graphicDesigner", "label": "Grafik Tasarımcı" },
+        { "value": "socialMediaDesigner", "label": "Sosyal Medya Yöneticisi" },
+        { "value": "architect", "label": "Mimar" },
+        { "value": "computerEngineer", "label": "Bilgisayar Mühendisi" },
+        { "value": "mechanicEngineer", "label": "Makine Mühendisi" },
+        { "value": "electricalEngineer", "label": "Elektrik-Elektronik Mühendisi" }
     ],
     "general": {
         "save": "Kaydet",

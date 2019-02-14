@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Avatar, withStyles, Tooltip, MenuItem } from '@material-ui/core';
+import { Avatar, withStyles, Tooltip } from '@material-ui/core';
 import {
     AddAPhoto as PhotoIcon
 } from '@material-ui/icons';
@@ -9,7 +9,7 @@ import { withNamespaces } from 'react-i18next';
 import 'react-phone-number-input/style.css';
 import Button from '../../components/UI/CustomButton';
 import Input from '../../components/UI/CustomInput';
-import Select from '../../components/UI/CustomSelect';
+import Select2 from '../../components/UI/CustomSelect2';
 import PhoneInput from '../../components/UI/CustomPhone';
 import CustomDate from '../../components/UI/CustomDate';
 import { formDataUpdate } from '../../helpers/validate';
@@ -128,6 +128,17 @@ class Profile extends Component {
     render() {
         const { classes, t } = this.props;
 
+        let jobs = t('jobs', { returnObjects: true });
+        let countries = [];
+        Regions.map(country => {
+            let cities = [];
+            country[2].split("|").map(elem => {
+                var city = elem.split("~");
+                return cities.push({ value: city[0], label: city[0] })
+            })
+            return countries.push({ value: country[0], label: country[0], cities })
+        })
+
         return (
             <div className={classes.flex}>
                 <div className={classes.leftSide}>
@@ -168,29 +179,21 @@ class Profile extends Component {
                         regions={'europe'}
                         label="profilePage.phoneNumber"
                     />
-                    <Select label="profilePage.country"
-                        value={this.state.form.country.value}
-                        onChange={this.formElementChangedHandler}
-                        name="country">
-                        {Regions.map((country) => (
-                            <MenuItem key={country[0]} value={country[0]}>{country[0]}</MenuItem>
-                        ))}
-                    </Select>
+                    <Select2 label="profilePage.country"
+                        value={countries.find(country => country.value === this.state.form.country.value)}
+                        onChange={(option) => this.formElementChangedHandler({ target: { name: "country", value: option ? option.value : null }})}
+                        options={countries}
+                        name="country" />
                     {
                         this.state.form.country.value &&
-                        <Select label="profilePage.city"
-                            value={this.state.form.city.value}
-                            onChange={this.formElementChangedHandler}
-                            name="city">
-                            {
-                                Regions.filter(region => {
-                                    return region[0] === this.state.form.country.value
-                                })[0][2].split("|").map(elem => {
-                                    var city = elem.split("~");
-                                    return <MenuItem key={city[1]} value={city[0]}>{city[0]}</MenuItem>
-                                })
+                        <Select2 label="profilePage.city"
+                            value={
+                                countries.find(country => country.value === this.state.form.country.value)
+                                    .cities.find(city => city.value === this.state.form.city.value)
                             }
-                        </Select>
+                            onChange={(option) => this.formElementChangedHandler({ target: { name: "city", value: option ? option.value : null }})}
+                            options={countries.find(country => country.value === this.state.form.country.value).cities}
+                            name="city" />
                     }
                     <CustomDate className={classes.thirdPartyInput}
                         label="profilePage.birthDate"
@@ -201,23 +204,11 @@ class Profile extends Component {
                         value={this.state.form.birthDate.value}
                         onChange={val => this.thirdPartyInputChangedHandler(val, "birthDate")}
                         animateYearScrolling={false}></CustomDate>
-                    <Select className={classes.thirdPartyInput}
-                        value={this.state.form.job.value}
-                        onChange={this.formElementChangedHandler}
-                        name="job"
-                        label="profilePage.job"
-                    >
-                        <MenuItem value="none" disabled>
-                            {t('general.selectJob')}
-                        </MenuItem>
-                        {t('jobs', { returnObjects: true }).map(({ value, text }) => (
-                            <MenuItem key={value} value={value}>{text}</MenuItem>
-                        ))}
-                    </Select>
-                    {/* <PhoneInput className={classes.thirdPartyInput}
-                        placeholder={t('profilePage.phoneNumber')}
-                        value={this.state.form.phone.value}
-                        onChange={val => this.thirdPartyInputChangedHandler(val, "phone")} /> */}
+                    <Select2 label="profilePage.job"
+                        value={jobs.find(job => job.value === this.state.form.job.value)}
+                        onChange={(option) => this.formElementChangedHandler({ target: { name: "job", value: option ? option.value : null }})}
+                        options={jobs}
+                        name="job" />
                     <Button className={classes.btn}
                         disabled={!this.checkFormValidity()}
                         onClick={this.saveBtnClicked}>{t('general.save')}</Button>

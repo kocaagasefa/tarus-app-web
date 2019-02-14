@@ -29,14 +29,14 @@
         "city": "City"
     },
     "jobs": [
-        { "value": "secretary", "text": "Secretary" },
-        { "value": "editor", "text": "Editor" },
-        { "value": "graphicDesigner", "text": "Graphic Designer" },
-        { "value": "socialMedia", "text": "Social Media Manager" },
-        { "value": "architect", "text": "Architect" },
-        { "value": "computerEngineer", "text": "Computer Engineer" },
-        { "value": "mechanicEngineer", "text": "Mechanical Engineer" },
-        { "value": "electricalEngineer", "text": "Electrical Engineer" }
+        { "value": "secretary", "label": "Secretary" },
+        { "value": "editor", "label": "Editor" },
+        { "value": "graphicDesigner", "label": "Graphic Designer" },
+        { "value": "socialMedia", "label": "Social Media Manager" },
+        { "value": "architect", "label": "Architect" },
+        { "value": "computerEngineer", "label": "Computer Engineer" },
+        { "value": "mechanicEngineer", "label": "Mechanical Engineer" },
+        { "value": "electricalEngineer", "label": "Electrical Engineer" }
     ],
     "general": {
         "save": "Save",
