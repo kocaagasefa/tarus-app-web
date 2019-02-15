@@ -7,6 +7,7 @@ import { withNamespaces } from 'react-i18next';
 const customSelect = props => {
     const { container, classes, containerStyle, invalid, t, label, ...others } = props;
 
+    // deneme
     const colorStyle = ({
         control: styles => ({
             ...styles,
