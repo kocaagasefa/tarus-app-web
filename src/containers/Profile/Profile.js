@@ -266,7 +266,8 @@ const styles = theme => ({
         display: 'none'
     },
     btn: {
-        backgroundColor: '#f3f3f3',
+        backgroundColor: 'rgba(255, 192, 203, 0.4)',
+        color: "black",
         margin: theme.spacing.unit
     }
 })
