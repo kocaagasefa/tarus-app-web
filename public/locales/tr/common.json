@@ -39,8 +39,11 @@
         { "value": "electricalEngineer", "label": "Elektrik-Elektronik Mühendisi" }
     ],
     "general": {
+        "title": "Başlık",
+        "description": "Tanım",
         "save": "Kaydet",
-        "selectJob": "Meslek Seçiniz..."
+        "selectJob": "Meslek Seçiniz...",
+        "uploadPhotos": "Fotoğrafları Yükle"
     },
     "buttons": {
         "signUp": "Kaydol",
@@ -53,5 +56,9 @@
         "confirmPassword": "Şifre(Tekrar)",
         "name": "İsim",
         "surname": "Soyadı"
+    },
+    "roommate": {
+        "stepRoommateData": "Oda Arkadaşı Bilgileri",
+        "stepConfirm": "Önizle & Doğrula"
     }
 }
