@@ -39,8 +39,11 @@
         { "value": "electricalEngineer", "label": "Electrical Engineer" }
     ],
     "general": {
+        "title": "Title",
+        "description": "Description",
         "save": "Save",
-        "selectJob": "Select a Job..."
+        "selectJob": "Select a Job...",
+        "uploadPhotos": "Upload Photos"
     },
     "buttons": {
         "signUp": "Sign Up",
@@ -53,5 +56,9 @@
         "confirmPassword": "Confirm Password",
         "name": "Name",
         "surname": "Surname"
+    },
+    "roommate": {
+        "stepRoommateData": "Enter Roommate Data",
+        "stepConfirm": "Preview & Confirm"
     }
 }

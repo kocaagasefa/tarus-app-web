@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Dialog, Card, withStyles, FormControlLabel, Checkbox } from '@material-ui/core';
+import { Dialog, withStyles, FormControlLabel, Checkbox } from '@material-ui/core';
 import {
     PersonAddOutlined as PersonAddIcon,
     AlternateEmailOutlined as EmailIcon,
     VpnKeyOutlined as PasswordIcon
-
 } from '@material-ui/icons';
 import Input from '../../components/UI/CustomInput';
 import Button from '../../components/UI/CustomButton';
