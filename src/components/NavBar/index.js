@@ -12,35 +12,32 @@ const navBar = props => {
                 <Toolbar>
                     {
                         props.user &&
-                        <IconButton className={ClassSharp.menuButton} color="inherit" onClick={toggleDrawer}>
+                        <IconButton className={ClassSharp.menuButton + " " + classes.menuButton} color="inherit" onClick={toggleDrawer}>
                             <Menu />
                         </IconButton>
                     }
                     <Typography className={classes.brand} variant="h6" color="inherit">
                         HOMEBINE
-                </Typography>
+                    </Typography>
                     <div>
                         {
                             props.user ?
                                 <>
-                                    <Chip className={classes.content} label={props.user.email}></Chip>
-                                    <Button className={classes.content} onClick={props.signOut} color="inherit">{t('navbar.signout')}</Button>
+                                    <Chip label={props.user.email}></Chip>
+                                    <Button className={classes.btn} onClick={props.signOut} color="inherit">{t('navbar.signout')}</Button>
                                 </>
                                 :
                                 <>
-                                    <Button onClick={props.onSignInOpen} className={classes.content} color="inherit">{t('navbar.signin')}</Button>
-                                    <Button onClick={props.onSignUpOpen} className={classes.content} color="inherit">{t('navbar.signup')}</Button>
+                                    <Button onClick={props.onSignInOpen} className={classes.btn} color="inherit">{t('navbar.signin')}</Button>
+                                    <Button onClick={props.onSignUpOpen} className={classes.btn} color="inherit">{t('navbar.signup')}</Button>
                                 </>
                         }
 
                     </div>
                     <Hidden mdDown>
-                        <Button color="inherit" className={classes.content + " " + (props.lng === "en" ? classes.activeLanguage : "")} onClick={() => props.changeLanguage('en')}> EN </Button>
-                        <Button color="inherit" className={classes.content + " " + (props.lng === "tr" ? classes.activeLanguage : "")} onClick={() => props.changeLanguage('tr')}> TR </Button>
+                        <Button color="inherit" className={classes.btn + " " + (props.lng === "en" ? classes.activeLanguage : "")} onClick={() => props.changeLanguage('en')}> EN </Button>
+                        <Button color="inherit" className={classes.btn + " " + (props.lng === "tr" ? classes.activeLanguage : "")} onClick={() => props.changeLanguage('tr')}> TR </Button>
                     </Hidden>
-
-
-
                 </Toolbar>
             </AppBar>
         </div>
@@ -48,18 +45,24 @@ const navBar = props => {
 };
 
 const styles = theme => ({
+    btn: {
+        backgroundImage: 'linear-gradient(-180deg, rgba(49, 39, 201, 0.7), rgba(230, 69, 126))',
+        marginLeft: 2
+    },
     navBar: {
-        backgroundImage: 'linear-gradient(-180deg, #380040 0%, #6F007F 100%)',
+        //backgroundImage: 'linear-gradient(-180deg, #380040 0%, #6F007F 100%)',
+        backgroundColor: 'white',
         zIndex: theme.zIndex.drawer + 1,
     },
     brand: {
+        color: 'rgba(49, 39, 201, 0.7)',
         flexGrow: 1
     },
     activeLanguage: {
         fontWeight: "bold"
     },
-
     menuButton: {
+        color: 'rgba(49, 39, 201, 0.7)',
         marginLeft: -12,
         marginRight: 20,
     },

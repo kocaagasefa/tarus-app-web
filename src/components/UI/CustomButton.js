@@ -19,10 +19,10 @@ const style = theme => ({
         alignItems: 'center',
         justifyContent: 'center',
         flex: '1',
-        color: 'white',
+        color: 'black',
         border: '1px solid #9927B1',
         borderRadius: '10px',
-        backgroundImage: 'linear-gradient(-180deg, #31073D 0%, #9927B1 100%)'
+        backgroundColor: 'rgba(255, 192, 203, 0.4)',
     },
     disabled: {
         backgroundImage: "none",
