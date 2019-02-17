@@ -4,7 +4,7 @@ import EmailIcon from '@material-ui/icons/Email'
 import { formDataUpdate } from '../../helpers/validate';
 import Button from '../UI/CustomButton';
 import Input from '../UI/CustomInput';
-import { withStyles, MenuItem } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
 class RoommateInformation extends Component {
 
@@ -15,9 +15,6 @@ class RoommateInformation extends Component {
             },
             description: {
                 value: ""
-            },
-            type: {
-                value: "shared"
             }
         }
     }
@@ -26,7 +23,6 @@ class RoommateInformation extends Component {
         const roommate = {
             title: this.state.form.title.value,
             description: this.state.form.description.value,
-            type: this.state.form.type.value,
             confirmed: false
         }
         this.props.addRoommate(roommate).then(res => {
@@ -46,8 +42,8 @@ class RoommateInformation extends Component {
     }
 
     render() {
-        const { title, description, type } = this.state.form;
-        const { classes, t } = this.props;
+        const { title, description } = this.state.form;
+        const { classes, t, nextStep, prevStep } = this.props;
 
         return (
             <form className={classes.form}>
@@ -68,20 +64,14 @@ class RoommateInformation extends Component {
                     onChange={this.handleChange}
                     invalid={!description.isValid && description.touched}
                 />
-                <Input className={classes.type}
-                    lefticon={<EmailIcon style={{ color: "white" }} />}
-                    name="type"
-                    placeholder="type"
-                    type="select"
-                    value={type.value}
-                    onChange={this.handleChange}
-                    invalid={!type.isValid && type.touched}
-                >
-                    {[{ text: "Shared Room", value: "shared" }, { text: "Private Room", value: "private" }].map(({ value, text }) => (
-                        <MenuItem key={value} value={value}>{text}</MenuItem>
-                    ))}
-                </Input>
-                <Button onClick={this.addHouse} >Save </Button>
+                <Button className={[classes.btn, classes.left].join(" ")}
+                    onClick={() => prevStep()}>
+                    {t('general.previous')}
+                </Button>
+                <Button className={[classes.btn, classes.right].join(" ")}
+                    onClick={() => nextStep()}>
+                    {t('general.next')}
+                </Button>
             </form>
         )
     }
@@ -90,14 +80,22 @@ class RoommateInformation extends Component {
 
 const styles = theme => ({
     form: {
-        backgroundColor: 'initial',
         backgroundImage: 'linear-gradient(-180deg, rgba(49, 39, 201, 0.7), rgba(230, 69, 126, 0.7))',
-        padding: 10,
-        flexGrow: 1,
-        justifyContent: "space-between"
+        height: '100vh',
+        justifyContent: 'center',
+        textAlign: 'center',
+        flex: 1
     },
-    type: {
-        width: "100%"
+    btn: {
+        width: "10%",
+        marginLeft: theme.spacing.unit,
+        backgroundColor: 'rgba(230, 69, 126, 0.4)'
+    },
+    floatLeft: {
+        float: "left"
+    },
+    floatRight: {
+        float: "right"
     }
 });
 

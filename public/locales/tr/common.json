@@ -43,7 +43,9 @@
         "description": "Tanım",
         "save": "Kaydet",
         "selectJob": "Meslek Seçiniz...",
-        "uploadPhotos": "Fotoğrafları Yükle"
+        "uploadPhotos": "Fotoğrafları Yükle",
+        "next": "İleri >>",
+        "previous": "<< Geri"
     },
     "buttons": {
         "signUp": "Kaydol",

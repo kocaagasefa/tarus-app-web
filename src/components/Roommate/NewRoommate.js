@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withNamespaces} from 'react-i18next';
 import { Stepper, Step, StepLabel } from '@material-ui/core';
-import { addHouse } from '../../store/actions/house';
+import { addRoommate } from '../../store/actions/roommate';
 import RoommateInformation from './RoommateInformation';
 import UploadPhotos from './UploadPhotos';
 
@@ -18,12 +18,19 @@ class NewHRoommate extends Component {
         }))
     }
 
+    prevStep = (key) => {
+        this.setState(prevState => ({
+            activeStep: prevState.activeStep - 1, 
+            key
+        }))
+    }
+
     renderStep = () => {
         switch (this.state.activeStep) {
             case 0:
-                return <RoommateInformation addHouse={this.props.addHouse} onComplete={this.nextStep} />
+                return <RoommateInformation addRoommate={this.props.addRoommate} nextStep={this.nextStep} prevStep={this.prevStep} />
             case 1:
-                return <UploadPhotos houseId={this.state.key} />
+                return <UploadPhotos roommateId={this.state.key} />
             default:
                 return <div>Error</div>
         }
@@ -53,7 +60,7 @@ class NewHRoommate extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addHouse: (house) => dispatch(addHouse(house))
+        addRoommate: (roommate) => dispatch(addRoommate(roommate))
     }
 }
 

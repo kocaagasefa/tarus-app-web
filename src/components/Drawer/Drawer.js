@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { Drawer, List, ListItem, ListItemText, Divider, withStyles, Hidden } from '@material-ui/core';
-import { Person, Home, SupervisedUserCircleRounded } from '@material-ui/icons';
+import { Person, Home, SupervisedUserCircleRounded as Roommate } from '@material-ui/icons';
 
 class CustomDrawer extends Component {
   render() {
@@ -9,7 +9,7 @@ class CustomDrawer extends Component {
     const menus = [
       { value: 'Profile', to: '/profile', icon: Person },
       { value: 'Houses', to: '/houses', icon: Home },
-      { value: 'Roommates', to: '/roommates', icon: SupervisedUserCircleRounded}
+      { value: 'Roommates', to: '/roommates', icon: Roommate}
     ]
 
     return (

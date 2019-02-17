@@ -7,11 +7,8 @@ class UploadPhotos extends Component {
     state = {
         photos: [...new Array(12)]
     }
-    componentDidMount() {
 
-    }
     photoSelected = (data, index) => {
-        console.log(index, data)
         this.setState(prevState => {
             return {
                 photos: prevState.photos.map((photo, i) => {
@@ -22,12 +19,12 @@ class UploadPhotos extends Component {
             }
         })
     }
+
     addPhotos = () => {
-        console.log("will add")
         this.props.addPhotos(this.state.photos.filter(photo=>photo),this.props.houseId)
     }
+
     render() {
-        alert(this.props.houseId)
         return (
             <Grid container>
                 {

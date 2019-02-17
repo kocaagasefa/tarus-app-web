@@ -43,7 +43,9 @@
         "description": "Description",
         "save": "Save",
         "selectJob": "Select a Job...",
-        "uploadPhotos": "Upload Photos"
+        "uploadPhotos": "Upload Photos",
+        "next": "Next >>",
+        "previous": "<< Previos"
     },
     "buttons": {
         "signUp": "Sign Up",
