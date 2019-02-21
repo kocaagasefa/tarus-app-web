@@ -28,6 +28,17 @@ exports.addHouseLinksToDatabase = functions.storage.object().onFinalize((object)
     return Promise.resolve(true);
 });
 
+exports.addRoommateLinksToDatabase = functions.storage.object().onFinalize((object) => {
+    if (object.name.startsWith("roommates")) {
+        const [, roommate_id, fileName] = object.name.split('/');
+
+        return db.ref('/roommates/' + roommate_id, + '/photos/' + fileName.split('.')[0])
+            .set(mediaLinkToDownloadableUrl(object))
+            .then(_ => true)
+    }
+    return Promise.resolve(true);
+});
+
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //

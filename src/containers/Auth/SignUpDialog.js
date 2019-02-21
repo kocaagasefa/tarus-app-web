@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Dialog, Card, withStyles, FormControlLabel, Checkbox } from '@material-ui/core';
+import { Dialog, withStyles, FormControlLabel, Checkbox } from '@material-ui/core';
 import {
     PersonAddOutlined as PersonAddIcon,
     AlternateEmailOutlined as EmailIcon,
     VpnKeyOutlined as PasswordIcon
-
 } from '@material-ui/icons';
 import Input from '../../components/UI/CustomInput';
 import Button from '../../components/UI/CustomButton';
@@ -67,7 +66,7 @@ class SignUpDialog extends Component {
         },
         accept: true
     }
-    
+
     handleChange = (event) => {
         const { name, value, checked } = event.target;
         this.setState(prevState => {
@@ -78,7 +77,6 @@ class SignUpDialog extends Component {
     }
 
     handleSignUp = () => {
-        //const {email,password,name,surname} = this.state;
         const [email, password, name, surname] = ["email", "password", "name", "surname"].map(key => this.state.form[key].value)
         this.props.signUp({
             email, password, name, surname
@@ -93,7 +91,11 @@ class SignUpDialog extends Component {
         const { email, password, confirmPassword, name, surname } = this.state.form;
         return (
             <Dialog onClose={onSignUpClose} aria-labelledby="login-title" {...other} fullWidth={true} maxWidth={'sm'}>
-                <Card className={classes.signIn}>
+                <form className={classes.signIn}
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        this.handleSignUp()
+                    }}>
                     <PersonAddIcon className={classes.icon} color="primary" />
                     <Input
                         lefticon={<EmailIcon style={{ color: "white" }} />}
@@ -145,18 +147,19 @@ class SignUpDialog extends Component {
                                     root: classes.root,
                                     checked: classes.checked,
                                 }}
-                                iconStyle={{fill: 'white'}}
+                                iconStyle={{ fill: 'white' }}
                             />
                         }
                         label="Accept the user agreement"
                     />
                     <Button
+                        type="submit"
                         variant="outlined"
                         disabled={!this.checkFormValidity()}
                         onClick={this.handleSignUp} >
                         {t('buttons.signUp')}
-                </Button>
-                </Card>
+                    </Button>
+                </form>
             </Dialog>
         );
     }
