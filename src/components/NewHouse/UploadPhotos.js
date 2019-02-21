@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PhotoThumbnail from './PhotoThumbnail';
+import PhotoThumbnail from '../PhotoThumbnail/PhotoThumbnail';
 import { Grid, Button } from '@material-ui/core';
 import { addPhotos } from '../../store/actions';
 class UploadPhotos extends Component {
@@ -16,7 +16,6 @@ class UploadPhotos extends Component {
         })
     }
     addPhotos = () => {
-        console.log("will add")
         this.props.addPhotos(this.state.photos.filter(photo=>photo),this.props.houseId).then(this.props.onComplete)
     }
     photoDeleted = (index) => {
