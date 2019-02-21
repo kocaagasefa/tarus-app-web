@@ -5,7 +5,7 @@ import Label from './CustomLabel';
 import { withNamespaces } from 'react-i18next';
 
 const customInput = props => {
-    const { container, lefticon, classes, containerStyle, invalid, type, t, label, ...others } = props;
+    const { container, lefticon, classes, containerStyle, invalid, type, t, label,tReady,i18nOptions,defaultNS,reportNS, ...others } = props;
 
     return (
         <div className={classes.customInput}>

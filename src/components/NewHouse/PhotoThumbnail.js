@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Photo from '@material-ui/icons/Photo'
-import { withStyles, Grid } from '@material-ui/core';
+import { Photo, Delete } from '@material-ui/icons'
+import { withStyles, Grid, IconButton } from '@material-ui/core';
 
 
 
@@ -10,7 +10,6 @@ class PhotoThumbnail extends Component {
     }
     selectPhoto = (event) => {
         let { files, value } = event.target;
-        console.log("key", this.props.index)
         this.setState({ value })
         if (files) {
             const reader = new FileReader();
@@ -19,24 +18,28 @@ class PhotoThumbnail extends Component {
         }
     }
     render() {
-        const { classes } = this.props;
-
-
+        const { classes, enabled } = this.props;
         return <Grid item xs={2}>
             <div className={classes.container} >
                 <div className={classes.photoWrapper} style={{
                     backgroundImage: `url(${this.props.data})`
                 }}>
-
                     <input id={"photo" + this.props.index}
                         type="file"
                         name="photo"
                         className={classes.hiddenInput}
                         value={this.state.value}
                         onChange={this.selectPhoto} />
-                    <label htmlFor={"photo" + this.props.index}>
-                        <Photo className={classes.icon} fontSize={"large"} />
-                    </label>
+                    {
+                        !this.props.data ? enabled ?
+                            <label htmlFor={"photo" + this.props.index}>
+                                <Photo className={[classes.icon, enabled ? "" : classes.iconDisabled].join(" ")} fontSize={"large"} />
+                            </label> : null :
+                            <IconButton onClick={() => this.props.photoDeleted(this.props.index)}>
+                                <Delete className={[classes.icon, classes.iconDelete].join(" ")} />
+
+                            </IconButton>
+                    }
                 </div>
             </div>
         </Grid>
@@ -73,6 +76,12 @@ const styles = theme => ({
     },
     icon: {
         cursor: "pointer"
+    },
+    iconDelete: {
+        color: "red"
+    },
+    iconDisabled: {
+        color: "#f3f3f3"
     }
 })
 

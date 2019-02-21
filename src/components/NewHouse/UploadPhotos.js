@@ -5,33 +5,32 @@ import { Grid, Button } from '@material-ui/core';
 import { addPhotos } from '../../store/actions';
 class UploadPhotos extends Component {
     state = {
-        photos: [...new Array(12)]
+        photos: []
     }
     componentDidMount() {
 
     }
-    photoSelected = (data, index) => {
-        console.log(index, data)
+    photoSelected = (data) => {
         this.setState(prevState => {
-            return {
-                photos: prevState.photos.map((photo, i) => {
-                    if (i === index)
-                        return data
-                    return photo
-                })
-            }
+            return {photos:[...prevState.photos, data],enabled:prevState.enabled+1}
         })
     }
     addPhotos = () => {
         console.log("will add")
-        this.props.addPhotos(this.state.photos.filter(photo=>photo),this.props.houseId)
+        this.props.addPhotos(this.state.photos.filter(photo=>photo),this.props.houseId).then(this.props.onComplete)
+    }
+    photoDeleted = (index) => {
+        this.setState(prevState=> {
+            return {
+                photos:prevState.photos.filter((photo,i) => index!==i)
+            }
+        })
     }
     render() {
-        alert(this.props.houseId)
         return (
             <Grid container>
                 {
-                    this.state.photos.map((data, key) => <PhotoThumbnail key={key} index={key} data={data} photoSelected={this.photoSelected} />)
+                    [...new Array(12)].map((_, key) => <PhotoThumbnail key={key} index={key} data={this.state.photos[key]} photoSelected={this.photoSelected} photoDeleted={this.photoDeleted} enabled={this.state.photos.length === key}/>)
                 }
                 <Button color="primary" variant="contained" onClick={this.addPhotos}>Add Photos</Button>
             </Grid>

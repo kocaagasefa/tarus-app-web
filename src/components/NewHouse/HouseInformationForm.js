@@ -29,7 +29,6 @@ class HouseInformationForm extends Component {
         }
         this.props.addHouse(house).then(res=>{
             if(res){
-                console.log(res)
                 this.props.onComplete(res.key);
             }
         });
